@@ -1,0 +1,4202 @@
+[
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có đồ dùng cá nhân của người bệnh/người nhà để lộn xộn ngoài khu vực quy định",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có thiết bị hỏng (giường, bình oxy, máy đo...) lẫn với thiết bị tốt",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Không có người nhà người bệnh ở lại trong buồng bệnh khi đang thực hiện thủ thuật, kỹ thuật điều dưỡng hoặc thủ thuật y khoa",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Thiết bị (bình oxy, máy truyền dịch, cọc truyền) đặt ổn định, không cản lối đi",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Lối đi giữa các giường thông thoáng ≥1m; không có dây điện, ống dẫn nguy hiểm",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân loại chất thải y tế đúng màu sắc (vàng/đen/xanh); thùng rác đúng vị trí",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi giường có số giường rõ; đồ dùng người bệnh gọn trong tủ đầu giường",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Thiết bị y tế của buồng có vị trí cố định, được đánh số nếu có nhiều máy",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Phòng bệnh gọn gàng: tủ đầu giường đóng cửa, đồ dùng cá nhân người bệnh để đúng nơi quy định, không có đồ đạc bừa bãi trên sàn hoặc gầm giường",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Người nhà người bệnh không ngồi, nằm trên giường bệnh; ghế ngồi chờ được bố trí đúng vị trí quy định, không cản lối đi và không xâm phạm không gian điều trị; không có quần áo, đồ dùng cá nhân phơi tại cửa buồng bệnh hoặc lan can hành lang",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Sàn, tường, giường bệnh, tủ đầu giường không có bụi, vết bẩn, dịch tiết",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hôi, mùi ẩm mốc trong buồng bệnh",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Thùng rác không đầy quá mức; không có rác trên sàn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có bảng phân công vệ sinh buồng bệnh theo ca; 100% NV biết trách nhiệm của mình",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Phân công kiểm tra vệ sinh buồng bệnh mỗi ca; điều dưỡng ký nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra buồng bệnh ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận phản ánh của người bệnh/người nhà về vệ sinh buồng bệnh; có xử lý",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng đánh giá chất lượng vệ sinh buồng bệnh; họp cải tiến với hộ lý, điều dưỡng",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra bình oxy, thiết bị y tế; hạn SD thuốc cạnh giường bệnh",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "1. Buồng bệnh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Buồng bệnh luôn sẵn sàng tiếp nhận người bệnh mới; thiết bị hoạt động tốt",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có vật tư, dụng cụ hết hạn hoặc hết vô khuẩn trong phòng/hộp dụng cụ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có dụng cụ hỏng, gỉ sét, không còn dùng được trong tủ/khay",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ để đúng dụng cụ theo danh mục buồng thủ thuật — không có đồ cá nhân, đồ thừa",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Dụng cụ sắc nhọn được bảo quản an toàn; bàn thủ thuật chắc chắn, ổn định",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Khu vực vô khuẩn được phân vùng rõ; không có nguy cơ ô nhiễm chéo",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Tuân thủ nguyên tắc KSNK: phân vùng sạch/bẩn, lưu thông một chiều",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi dụng cụ có khay/hộp riêng, được dán nhãn, xếp theo nhóm",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo trình tự thủ thuật; dụng cụ dùng trước để dễ lấy trước",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu dụng cụ, nhận biết ngay qua bảng vị trí dụng cụ (sơ đồ vị trí từng dụng cụ) hoặc danh sách kiểm",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Phòng gọn gàng, bề mặt phẳng, dán nhãn đồng nhất; không có poster cũ",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bàn thủ thuật, bề mặt, dụng cụ được lau khử khuẩn sau mỗi thủ thuật theo quy định",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi máu, mùi hóa chất lạ tồn đọng sau thủ thuật",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có rác y tế, bao bì, gạc bẩn sau thủ thuật",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có quy trình chuẩn bị và dọn dẹp sau thủ thuật; phân công rõ từng người",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Kiểm tra dụng cụ và vật tư trước mỗi thủ thuật; ký xác nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra buồng thủ thuật ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố liên quan đến dụng cụ/vật tư; có phương án cải tiến",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê dụng cụ, hạn vô khuẩn; sơ kết quy trình thủ thuật",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra tình trạng dụng cụ, máy móc; hạn vô khuẩn được kiểm tra định kỳ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "2. Buồng thủ thuật",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Buồng thủ thuật luôn sẵn sàng thực hiện kỹ thuật; không cần chuẩn bị thêm",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có vật tư, thuốc, chỉ khâu hết hạn hoặc hết vô khuẩn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có đồ cá nhân của NV, dụng cụ hỏng trong phòng mổ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có trang thiết bị, vật tư trong danh mục phòng mổ; không có thiết bị thừa",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Bàn mổ, đèn mổ, máy gây mê đặt đúng vị trí, chắc chắn, an toàn điện",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Lưu thông một chiều (sạch → bẩn) được thực hiện nghiêm ngặt",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân vùng vô khuẩn tuyệt đối: khu vực mổ, khu chuẩn bị, khu thu hồi dụng cụ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi loại dụng cụ có vị trí cố định trên bàn dụng cụ, được bảng bóng dụng cụ (bảng phác thảo hình dạng từng dụng cụ)",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo quy trình phẫu thuật; dụng cụ theo đúng ca mổ",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Đếm dụng cụ trước/sau mổ theo quy trình; thiếu phát hiện ngay",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Phòng mổ trật tự, gọn gàng; không có dây điện rối, thiết bị thừa",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Sàn, bàn mổ, thiết bị được lau khử khuẩn giữa các ca và cuối ngày theo protocol",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi máu, mùi chất thải sau mổ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Chất thải phẫu thuật được thu gom đúng quy định sau mỗi ca",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có quy trình chuẩn bị phòng mổ, thu dọn sau mổ; phân công từng người trong ê-kíp",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Checklist an toàn phẫu thuật được thực hiện đầy đủ mỗi ca; ký xác nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng mổ ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố dụng cụ/thiết bị trong ca mổ; có xử lý và phòng ngừa",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê dụng cụ, hạn vô khuẩn vật tư; sơ kết ca phẫu thuật",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra thiết bị trước ca mổ (đèn, dao điện, máy hút, máy gây mê)",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "3. Phòng mổ",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Phòng mổ luôn sẵn sàng tiếp nhận ca mổ khẩn cấp bất kỳ lúc nào",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có thuốc mẫu, vật tư hết hạn, tài liệu cũ hết hiệu lực trên bàn khám",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có dụng cụ khám hỏng (đèn soi tai, đèn đầu gỗ...) lẫn dụng cụ tốt",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có dụng cụ, vật tư cần thiết cho buổi khám; không có hồ sơ cũ chờ quá ngày",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Bàn khám ổn định, có giấy lót/phủ sạch; thiết bị không có cạnh sắc lộ ra",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Lối đi từ khu chờ vào phòng khám thông thoáng, không vật cản",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân vùng sạch/bẩn: dụng cụ sau khám vào khay bẩn riêng, không để chung",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Dụng cụ khám (ống nghe, đèn pin, búa phản xạ...) có chỗ để cố định, dán nhãn; ga/săng trải giường khám sạch sẽ, được thay sau mỗi người bệnh hoặc khi bẩn",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Hồ sơ bệnh án được sắp xếp theo số thứ tự hoặc tên; dễ tìm trong 30 giây",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu vật tư tiêu hao (găng, đèn khám), nhận biết ngay qua cơ số",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Bàn khám gọn gàng giữa các người bệnh; không có hồ sơ người bệnh khác để hở",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bàn khám, bề mặt, dụng cụ được lau khử khuẩn đầu ngày và giữa các ca khám",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi lạ (mùi bệnh nhân, mùi hóa chất) tồn đọng",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có rác, bao bì vật tư cũ trên bàn hoặc sàn phòng khám",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có bảng phân công dụng cụ, vật tư phòng khám; 100% NV và BS khám biết",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Kiểm tra dụng cụ, vật tư đầu mỗi buổi khám; y tá/điều dưỡng ký nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra phòng khám ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận phản ánh của người bệnh về môi trường phòng khám; có xử lý",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng sơ kết, rà soát dụng cụ, đề xuất bổ sung/thay thế",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra dụng cụ khám (pin đèn, hiệu chỉnh máy đo HA, SpO2)",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "4. Phòng khám bệnh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Phòng khám luôn sẵn sàng đón người bệnh đầu buổi; không phải chuẩn bị lại",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có thuốc hết hạn sử dụng trong tủ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có thuốc/dung dịch bị đổi màu, vẩn đục, hỏng bao bì",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ để đúng danh mục thuốc cấp cứu quy định — không có thuốc lạ, thuốc không cần thiết",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Thuốc được đặt ổn định, không có nguy cơ đổ vỡ, rò rỉ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Dán nhãn LASA (Look-Alike Sound-Alike) đầy đủ; thuốc độc A/B để riêng, khóa đúng quy định",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Bảo quản đúng điều kiện: nhiệt độ, ánh sáng, độ ẩm theo quy định từng loại",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi thuốc có vị trí cố định, được dán nhãn tên + liều; tách riêng từng loại",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo nhóm dược lý + nguyên tắc FIFO (nhập trước xuất trước)",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu thuốc, thấy ngay nhờ nhãn cơ số Min-Max hoặc ô trống rõ ràng",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Tủ gọn gàng, nhãn đồng nhất, dễ nhìn; không có giấy tờ cá nhân trong tủ thuốc",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bề mặt tủ, ngăn kéo, giá kệ không có bụi, vết ẩm, đốm mốc",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi lạ trong tủ (mùi thuốc hỏng, mùi ẩm)",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có bao bì rỗng, vỏ thuốc, rác trong tủ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có danh mục thuốc cấp cứu (bản cứng trong tủ hoặc dán mặt trong cánh cửa) — 100% NV nắm được vị trí từng thuốc",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Phân công người kiểm tra tủ thuốc cấp cứu hàng ngày theo ca (có ký nhận)",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra tủ thuốc ≥1 lần/tuần; ghi vào sổ kiểm tra",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận ý kiến cải tiến sắp xếp tủ thuốc từ NV (điều dưỡng, bác sĩ); có bằng chứng",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng rà soát danh mục, hạn dùng, bổ sung thiếu hụt; báo cáo Khoa Dược",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra hạn SD, điều kiện bảo quản thuốc — thực hiện đủ tần suất theo quy định",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "5. Tủ thuốc cấp cứu",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Mọi thuốc cấp cứu luôn đủ cơ số, trong hạn, sẵn sàng sử dụng ngay khi cần",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có vật tư hết hạn (kim, bơm tiêm, băng gạc, cồn...) trên xe",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có dụng cụ hỏng, gỉ sét, mất nắp không dùng được",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ để đúng vật tư theo quy định cơ số xe tiêm — không có đồ cá nhân, đồ thừa",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Hộp an toàn đặt đúng vị trí, chắc chắn; kim sau dùng bỏ thẳng vào hộp an toàn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Không có nguy cơ vật sắc nhọn lộ ra gây sát thương khi thao tác",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân vùng vô khuẩn/sạch/bẩn trên xe rõ ràng theo nguyên tắc KSNK",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi loại vật tư có ngăn/khay riêng, được dán nhãn",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo trình tự thao tác: lấy lần lượt từ trên xuống dưới",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Nhìn vào xe biết ngay còn thiếu vật tư gì (nhờ nhãn cơ số hoặc ô trống)",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Xe gọn gàng; không để đồ dùng cá nhân, rác hoặc vật dụng không liên quan trên xe; thực hiện đúng quy định của bệnh viện về sử dụng khăn phủ xe",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Mặt xe, các ngăn, bánh xe không có bụi, máu, dịch tiết, vết bẩn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hôi, mùi thuốc cũ trên xe",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có vỏ kim, bao bì rỗng, rác trên xe sau mỗi ca tiêm",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có quy trình chuẩn bị xe tiêm và bảng phân công từng NV phụ trách xe theo ca",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Phân công kiểm tra xe tiêm đầu và cuối mỗi ca; có ký nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa/Điều dưỡng trưởng kiểm tra xe ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận cải tiến cách sắp xếp xe từ điều dưỡng; có bằng chứng thực hiện",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê, bổ sung cơ số, loại vật tư hết hạn; sơ kết xe tiêm",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra tình trạng xe, vật tư; hạn sử dụng được kiểm tra mỗi ca",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "6. Xe tiêm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Xe tiêm luôn đủ cơ số, sẵn sàng sử dụng ngay đầu mỗi ca làm việc",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có thuốc, dịch truyền hết hạn, bao bì hỏng trong kho",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có thuốc không có trong danh mục BV, thuốc không rõ nguồn gốc",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có thuốc, dịch truyền trong danh mục khoa; không tồn kho quá cơ số tối đa",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Kệ thuốc chắc chắn; dịch truyền chai lớn để kệ thấp, tránh đổ vỡ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Thuốc độc A/B, gây nghiện, hướng thần khóa riêng; LASA dán nhãn cảnh báo",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Kho đạt tiêu chuẩn GSP: nhiệt độ, ánh sáng, độ ẩm ghi nhật ký hàng ngày",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Thuốc sắp xếp theo nhóm dược lý, dạng bào chế; dán nhãn tên + liều",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Áp dụng FIFO — thuốc nhập trước để phía ngoài, xuất trước",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi sắp hết thuốc loại nào, thấy ngay qua nhãn Min-Max hoặc ô trống",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Kho gọn gàng; không để thuốc dưới sàn; lối đi thông thoáng ≥0.75m",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Kệ, sàn kho, tủ lạnh thuốc không có bụi, vết ẩm, đốm mốc; tổng vệ sinh ≥1 lần/tuần",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi ẩm, mùi thuốc hỏng trong kho",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có vỏ hộp thuốc, túi nilon, rác trong khu vực kho thuốc",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có danh mục thuốc kho, SOP xuất nhập kho; phân công thủ kho/dược sĩ phụ trách",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Ghi sổ nhập-xuất hàng ngày; kiểm kê cuối tháng; ký nhận đầy đủ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Trưởng khoa Dược hoặc Dược sĩ phụ trách kiểm tra kho ≥1 lần/tuần; ghi sổ kiểm tra",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố hết thuốc đột xuất, nhầm thuốc; có phân tích và phòng ngừa",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê toàn bộ, rà soát hạn dùng, báo cáo tồn kho theo quy định",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra nhiệt độ kho, tủ lạnh, cảm biến độ ẩm 2 lần/ngày; ghi nhật ký",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "7. Kho thuốc / tủ thuốc khoa",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Kho thuốc luôn đủ cơ số; không để xảy ra tình trạng thiếu thuốc điều trị",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có vật tư hết hạn, hỏng, không còn sử dụng được trong tủ/kho",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có vật tư không có trong danh mục khoa hoặc không rõ nguồn gốc",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Không tồn kho vượt quá cơ số tối đa quy định; không thiếu vật tư thiết yếu",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Kệ/tủ vật tư chắc chắn; vật tư nặng để kệ thấp, không có nguy cơ đổ vỡ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Vật tư sắc nhọn (kim, dao mổ, chỉ khâu) được bảo quản trong hộp/hộc riêng có nắp, không lộ ra",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Điều kiện bảo quản vật tư đúng quy định: nhiệt độ, độ ẩm, ánh sáng phù hợp từng loại; không để vật tư tiếp xúc trực tiếp với sàn hoặc nguồn nhiễm khuẩn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi loại vật tư có ngăn/kệ/hộc riêng, được dán nhãn tên + mã + đơn vị tính",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo chủng loại và nguyên tắc FIFO (nhập trước xuất trước); hạn dùng nhìn thấy rõ",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu vật tư loại nào, nhận biết ngay qua nhãn Min-Max hoặc ô trống trên kệ",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Tủ/kho gọn gàng; lối đi thông thoáng ≥0.75m; không để vật tư dưới sàn trực tiếp",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Kệ, tủ, sàn kho không có bụi, ẩm mốc, vết bẩn; tổng vệ sinh ≥1 lần/tuần",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi ẩm, mùi hóa chất lạ trong khu vực tủ vật tư",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có vỏ bao bì, túi nilon, rác trong khu vực kho/tủ vật tư",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có danh mục vật tư tủ khoa (bản cứng hoặc dán trong cửa tủ); 100% nhân viên nắm vị trí từng loại",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Phân công người kiểm tra tủ vật tư định kỳ (hàng ngày hoặc mỗi ca); có ký nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa/Điều dưỡng trưởng kiểm tra tủ vật tư ≥1 lần/tuần; ghi vào sổ kiểm tra",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận ý kiến cải tiến sắp xếp tủ vật tư từ nhân viên; có bằng chứng thực hiện",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê, rà soát hạn dùng, bổ sung thiếu hụt, loại vật tư hết hạn; báo cáo phòng Vật tư TBYT",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra hạn sử dụng, điều kiện bảo quản từng loại vật tư; thực hiện đúng tần suất",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "8. Tủ vật tư",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Tủ vật tư luôn đủ cơ số quy định; không để xảy ra tình trạng thiếu vật tư trong ca điều trị",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có hóa chất, sinh phẩm hết hạn, vẩn đục, mất nhãn trên bàn/tủ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có dụng cụ hỏng, ống nghiệm vỡ, đĩa Petri cũ không dùng được",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có hóa chất, dụng cụ cần thiết; không có mẫu bệnh phẩm cũ chưa xử lý",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Hóa chất ăn mòn, dễ cháy được lưu trữ đúng quy định; tủ hút an toàn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Khu sạch và khu bẩn (xử lý bệnh phẩm) tách biệt hoàn toàn",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phòng xét nghiệm đạt tiêu chuẩn KSNK: áp suất, thông khí, BSC cabinet đúng cấp",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Hóa chất/sinh phẩm có nhãn rõ tên, nồng độ, hạn dùng, điều kiện bảo quản",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo nhóm xét nghiệm, theo máy phân tích; FIFO cho sinh phẩm",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu hóa chất/sinh phẩm, nhận biết ngay qua cơ số tối thiểu",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Bàn xét nghiệm gọn gàng; không có mẫu bệnh phẩm để lộ ngoài khu xử lý",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bề mặt bàn, máy xét nghiệm, tủ lạnh được lau khử khuẩn theo lịch định kỳ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hóa chất lạ, mùi bệnh phẩm thoát ra ngoài khu xử lý",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có vỏ tube, bệnh phẩm, rác sinh học bên ngoài thùng đựng chất thải lây nhiễm",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có SOP cho từng xét nghiệm; bảng phân công vị trí từng NV; 100% NV nắm được",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Phân công kiểm tra máy, hóa chất đầu mỗi ca; ký nhận trên nhật ký máy",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng XN ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận cảnh báo chất lượng (QC out of range), nguyên nhân, biện pháp khắc phục",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê hóa chất, cập nhật SOP; sơ kết số lượng và chất lượng xét nghiệm",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định bảo dưỡng máy định kỳ; kiểm soát chất lượng QC hàng ngày",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "9. Phòng xét nghiệm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Máy móc, hóa chất luôn sẵn sàng; thời gian trả kết quả đạt chỉ tiêu",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có kim lấy máu, ống nghiệm hết hạn, vật tư hỏng trong phòng/tủ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có nhãn mẫu cũ, phiếu xét nghiệm cũ để lộn xộn trên bàn",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có vật tư cần thiết cho ca lấy mẫu; không có mẫu bệnh phẩm chờ quá thời gian quy định",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Hộp an toàn kim đặt đúng vị trí, chắc chắn; kim sau dùng bỏ thẳng vào hộp",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Bàn lấy mẫu sắp xếp không có cạnh sắc lộ ra; ghế tựa người bệnh ổn định",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân vùng sạch/bẩn rõ ràng; ống mẫu sau lấy vào khay có nắp, không để hở",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Ống nghiệm theo màu sắc được phân loại riêng, có nhãn ghi loại xét nghiệm",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Sắp xếp theo thứ tự lấy: ống lấy trước để ngoài cùng; theo nguyên tắc CLSI",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu ống nghiệm loại nào, thấy ngay nhờ giá đựng có nhãn cơ số",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Bàn lấy mẫu gọn gàng; nhãn tên người bệnh được dán ngay sau khi lấy",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bàn lấy mẫu, ghế, garô, bề mặt lau khử khuẩn sau mỗi người bệnh hoặc ≥2 lần/ca",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi máu, mùi cồn quá nồng tồn đọng trong phòng",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có bông cồn đã dùng, vỏ kim, ống nghiệm thừa trên bàn sau ca lấy mẫu",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có SOP lấy mẫu và xử lý mẫu; phân công NV phụ trách từng ca; 100% biết",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Kiểm tra vật tư đầu mỗi ca; ký nhận; bổ sung đủ cơ số trước khi nhận người bệnh",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng lấy mẫu ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố lấy mẫu sai, vỡ mẫu, nhầm nhãn; có phân tích nguyên nhân",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm kê vật tư, hạn dùng; sơ kết sự cố liên quan lấy mẫu",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra điều kiện bảo quản mẫu (nhiệt độ, thời gian); thực hiện đúng",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "10. Phòng lấy mẫu xét nghiệm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Phòng lấy mẫu luôn sẵn sàng, đủ vật tư cho người bệnh đến đầu ngày",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có vật liệu cản quang hết hạn, phim cũ, hộp thuốc thừa trong phòng",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có thiết bị phụ trợ hỏng (máy in phim, cassette vỡ) lẫn thiết bị tốt",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có dụng cụ, vật tư cần thiết; không có vật dụng cá nhân trong phòng chiếu",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Thiết bị cố định (máy X-quang, CT, MRI) có ký hiệu an toàn bức xạ đúng quy định",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Biển cảnh báo bức xạ, cửa chì, áo chì đúng vị trí; không có nguy cơ phơi nhiễm",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân vùng kiểm soát bức xạ theo quy định KSNK và An toàn bức xạ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Áo chì, giáp chì có số hiệu, treo đúng giá; vật liệu cản quang có nhãn đầy đủ",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Thiết bị phụ trợ (gối đỡ, băng cố định) sắp xếp theo quy trình chụp",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Danh sách kiểm tra trước khi chụp giúp phát hiện thiếu dụng cụ ngay",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Phòng chụp gọn gàng; bảng thông tin người bệnh được sắp xếp ngăn nắp",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bề mặt bàn chụp, máy, sàn phòng không có bụi, dịch cản quang, vết bẩn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hóa chất cản quang tồn đọng",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có rác, bao bì kim tiêm cản quang sau ca chụp",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có quy trình chụp chuẩn (SOP); phân công NV phụ trách từng loại máy",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Nhật ký máy được điền đầy đủ mỗi ca; ký nhận trước khi bắt đầu và cuối ca",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng máy ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố máy, hình ảnh kém chất lượng; có phân tích nguyên nhân",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm định máy, calibration; sơ kết số ca và chất lượng hình ảnh",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định warm-up máy hàng ngày, bảo dưỡng định kỳ; phim/kết quả đúng hạn",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "11. Phòng X-quang / CT Scanner / MRI",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Máy luôn sẵn sàng; không để người bệnh chờ vì máy chưa khởi động hoặc thiếu vật tư",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có gel siêu âm hết hạn, đầu dò hỏng không sửa được trong phòng",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có khăn giấy cũ, bao che đầu dò đã dùng, đồ vật thừa trên bàn siêu âm",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có thiết bị, vật tư cần thiết cho ca siêu âm; không có đồ cá nhân của nhân viên",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Đầu dò siêu âm bảo quản đúng giá đỡ chuyên dụng, không có nguy cơ rơi vỡ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Không có nguy cơ ô nhiễm chéo giữa người bệnh này với người bệnh khác",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Đầu dò có bao che vô khuẩn khi thực hiện thủ thuật xâm lấn theo đúng quy trình KSNK",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Đầu dò có số hiệu, đặt đúng giá đỡ có nhãn tên; gel siêu âm có vị trí cố định",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Bàn siêu âm sắp xếp theo trình tự thao tác; vật tư hay dùng trong tầm tay",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu gel hoặc bao che đầu dò, nhận biết ngay qua cơ số tối thiểu",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Màn hình siêu âm sạch, không có vết tay; phòng gọn gàng, không có gel cũ trên bàn",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bàn siêu âm, đầu dò, thiết bị lau khử khuẩn bề mặt sau mỗi người bệnh",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi gel siêu âm cũ hoặc mùi hóa chất tồn đọng",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có gel thừa, bao che đã dùng, rác y tế sau khi làm siêu âm",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có SOP thực hiện siêu âm và khử khuẩn đầu dò; phân công nhân viên phụ trách",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Nhật ký máy siêu âm điền đầy đủ mỗi ca; ký nhận trước khi bắt đầu ca",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng siêu âm ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố máy, chất lượng hình ảnh kém; có phân tích nguyên nhân",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm tra tình trạng đầu dò, hạn gel siêu âm; sơ kết số lượng ca",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định warm-up máy hàng ngày; bảo dưỡng định kỳ theo lịch nhà sản xuất",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "12. Phòng siêu âm",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Máy siêu âm luôn sẵn sàng; đầu dò đủ loại hoạt động tốt; không để người bệnh chờ vì máy hỏng",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có ống soi hỏng không sửa được, hóa chất khử khuẩn hết hạn trong phòng",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có phụ kiện nội soi cũ không dùng được lẫn với phụ kiện tốt",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có dụng cụ, vật tư trong danh mục phòng nội soi; không có đồ cá nhân",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Ống soi bảo quản đúng giá treo chuyên dụng, không gập góc, không bị đè lên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Khu vực bẩn (sau soi) và sạch (dụng cụ đã tiệt khuẩn) tách biệt hoàn toàn, có ký hiệu rõ ràng",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Thực hiện quy trình khử khuẩn cao mức/tiệt khuẩn ống soi theo đúng quy định KSNK sau mỗi ca",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Ống soi có số hiệu; phụ kiện (kẹp sinh thiết, thòng lọng...) có hộp/khay riêng, dán nhãn",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Hóa chất khử khuẩn sắp xếp theo đúng thứ tự quy trình xử lý dụng cụ",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi ống soi đang trong quy trình khử khuẩn, trạng thái theo dõi qua bảng ghi rõ ràng",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Phòng gọn gàng; bàn nội soi, màn hình, máy bơm đặt đúng vị trí quy định",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bàn nội soi, thiết bị lau khử khuẩn bề mặt sau mỗi người bệnh theo đúng protocol",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hóa chất khử khuẩn nồng độ cao thoát ra ngoài khu xử lý dụng cụ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có dịch cơ thể, rác y tế, bao bì sau thủ thuật nội soi",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có SOP nội soi và SOP xử lý ống soi; phân công nhân viên phụ trách từng ca",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Nhật ký ống soi và nhật ký khử khuẩn điền đầy đủ mỗi ngày; ký nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng nội soi ≥1 lần/tuần; có ghi sổ kiểm tra",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố ống soi hỏng, tai biến; phân tích nguyên nhân và phòng ngừa",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm tra hạn hóa chất khử khuẩn, tình trạng ống soi; sơ kết số ca",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra tình trạng ống soi trước ca; hạn hóa chất khử khuẩn kiểm tra định kỳ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "13. Phòng nội soi",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Luôn đủ ống soi đã khử khuẩn sẵn sàng; không để người bệnh chờ vì thiếu dụng cụ sạch",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có văn bản hết hiệu lực, phiên bản SOP cũ, biểu mẫu lỗi thời trên bàn/tủ",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có thiết bị văn phòng hỏng (máy in kẹt giấy, điện thoại hỏng) lẫn thiết bị tốt",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Bàn làm việc chỉ có tài liệu, đồ dùng cần thiết trong ca làm việc hiện tại",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Đồ dùng văn phòng đặt ổn định; không có vật nặng trên cao không có chắn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Lối đi trong phòng thông thoáng; dây điện, dây mạng không đặt trên đường đi",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Hồ sơ người bệnh, thông tin cá nhân được bảo mật; không để hở trên bàn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi loại tài liệu/hồ sơ có vị trí cố định trong tủ; dán nhãn tên hộp/ngăn",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Hồ sơ lưu trữ theo thứ tự (số, tên, năm); tìm được trong 60 giây",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu biểu mẫu, văn phòng phẩm, thấy ngay qua cơ số tối thiểu",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Bàn làm việc gọn gàng cuối mỗi ngày; không có giấy tờ, cốc chén bừa bãi",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Bàn ghế, máy tính, máy in, điện thoại không có bụi, vết tay bẩn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi đồ ăn, mùi ẩm trong phòng làm việc",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Thùng rác không đầy quá mức; không có rác trên bàn hoặc sàn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có phân công chỗ ngồi, trách nhiệm từng NV; nội quy phòng làm việc được niêm yết",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Phân công vệ sinh phòng hành chính theo tuần; ký nhận",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra phòng HC ≥1 lần/tuần; nhắc nhở và ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận đề xuất cải tiến môi trường làm việc từ NV; có xử lý",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng rà soát, hủy tài liệu hết hiệu lực; cập nhật danh mục hồ sơ",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định tắt thiết bị điện trước khi ra về; kiểm tra khóa cửa cuối ngày",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "14. Phòng hành chính khoa/phòng/TT",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Phòng hành chính sẵn sàng làm việc đầu giờ; không mất thời gian tìm tài liệu",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có đồ dùng cá nhân thừa, thực phẩm để qua ngày, đồ dùng hỏng trong phòng",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có tài liệu chuyên môn, hồ sơ người bệnh, thuốc/vật tư y tế trong phòng nghỉ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Mỗi người chỉ có đồ dùng cần thiết trong tủ/ô cá nhân của mình",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Giường/ghế nằm ổn định; không có vật nặng trên cao không có chắn",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Lối đi thông thoáng; không có túi xách, đồ cá nhân để trên sàn lối đi",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Thực phẩm được bảo quản kín; không để gây ô nhiễm không khí phòng",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Đồ cá nhân trong ô/tủ riêng có tên; không để chung không có nhãn",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Khu vực ngủ, khu ăn uống (nếu có) tách biệt rõ ràng",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Vật dụng chung (ấm đun, tủ lạnh nhỏ) có quy định sử dụng dán rõ",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Phòng trực gọn gàng, thoáng; không có quần áo phơi, đồ lộn xộn",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Sàn, giường, bàn ghế không có bụi, vết bẩn; tổng vệ sinh ≥1 lần/tuần",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi đồ ăn cũ, mùi ẩm trong phòng trực",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Thùng rác không đầy; không có rác đồ ăn để qua đêm",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có nội quy phòng trực niêm yết; phân công vệ sinh theo ca/tuần rõ ràng",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Người trực cuối ca kiểm tra và ký nhận tình trạng phòng trước khi bàn giao",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra phòng trực ≥1 lần/tuần (có thể đột xuất); ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận phản ánh về phòng trực; xử lý và thông báo kết quả cho NV",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng rà soát nội quy, đề xuất cải thiện tiện nghi phòng trực",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định tắt điều hòa, đèn khi không dùng; khóa cửa đúng quy định",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "15. Phòng trực nhân viên",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Phòng trực luôn trong tình trạng sạch sẽ, sẵn sàng cho ca trực tiếp theo",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có linh kiện hỏng, phụ tùng cũ không dùng được lẫn với linh kiện tốt",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có hóa chất bảo trì hết hạn, bao bì rỗng trong khu vực kỹ thuật",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có thiết bị, linh kiện, dụng cụ theo danh mục phòng máy; không có đồ thừa",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Tủ điện, hộp kết nối được đóng kín; không có dây điện hở, cầu dao lộ thiên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Biển cảnh báo điện áp cao, không vào khu vực nguy hiểm đặt đúng vị trí",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phòng máy đạt tiêu chuẩn: thông khí, nhiệt độ, không có bụi kim loại",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi máy/thiết bị có nhật ký máy, biển hiệu tên-mã số; dụng cụ có shadow board",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Linh kiện dự phòng sắp xếp theo loại máy; dán nhãn mã phụ tùng",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu linh kiện, phụ tùng quan trọng, nhận biết ngay qua danh sách cơ số",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Phòng máy gọn gàng, sàn sạch; cáp điện gọn trong máng cáp, không rối",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Thiết bị, sàn phòng máy không có bụi, dầu mỡ, mạt kim loại",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi khét, mùi hóa chất lạ trong phòng máy",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có rác, vỏ linh kiện, dầu nhớt tràn trên sàn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có kế hoạch bảo trì định kỳ từng máy; phân công kỹ thuật viên phụ trách",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Nhật ký máy, nhật ký bảo trì điền đầy đủ; ký nhận sau mỗi lần kiểm tra/sửa",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra phòng máy ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố máy hỏng, thời gian ngừng hoạt động; có phân tích nguyên nhân",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm tra, hiệu chỉnh thiết bị đo lường, cập nhật nhật ký bảo trì",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra tình trạng thiết bị đầu ca vận hành; warm-up đúng quy trình",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "16. Phòng máy / phòng kỹ thuật",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Thiết bị luôn hoạt động ổn định; không để xảy ra ngừng hoạt động không có kế hoạch",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có thiết bị hỏng, xe đẩy cũ, hộp carton, đồ thừa để dọc hành lang",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có chậu cây, biển quảng cáo, ghế cá nhân đặt tự phát không theo quy định",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Hành lang chỉ có thiết bị, biển chỉ dẫn được phê duyệt đặt đúng vị trí quy định",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Lối đi hành lang rộng ≥1.8m (khu người bệnh); không có vật cản lối thoát hiểm",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Xe lăn, cáng cứu thương để đúng vị trí kẻ vạch; không chắn cửa thoát hiểm",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân loại rác thải công cộng đúng màu sắc; không có rác y tế lẫn rác thường",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Ghế chờ xếp thẳng hàng đúng vị trí; có số/ký hiệu nếu nhiều khu",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Biển chỉ dẫn rõ ràng, đồng nhất; lối đi có ký hiệu hướng dẫn dễ hiểu",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Bình chữa cháy, thiết bị khẩn cấp tại đúng vị trí; dễ thấy, dễ lấy",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Hành lang thoáng sáng, tường/sàn không có vết bẩn, poster bong tróc",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Sàn hành lang, tay vịn, ghế chờ được lau dọn ≥2 lần/ngày theo lịch",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hôi, mùi thuốc đặc quánh tại hành lang",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Thùng rác hành lang không đầy; không có rác vương vãi trên sàn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có bản đồ phân công khu vực vệ sinh hành lang cho hộ lý; dán công khai",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Hộ lý/NV vệ sinh ký nhận sau mỗi lần lau dọn theo lịch",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo kiểm tra hành lang/khu công cộng ≥1 lần/tuần; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận phản ánh của người bệnh/người nhà về hành lang; xử lý trong 24h",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng rà soát biển chỉ dẫn, thiết bị công cộng; đề xuất cải thiện",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra bình chữa cháy, đèn sự cố, lối thoát hiểm định kỳ",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "17. Hành lang / khu vực công cộng",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Hành lang luôn thông thoáng, sạch sẽ, sẵn sàng phục vụ người bệnh",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có túi rác quá đầy, buộc miệng hở, chờ quá 24h chưa chuyển",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có kim tiêm, vật sắc nhọn nằm ngoài hộp an toàn",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ có thùng, túi đúng màu theo phân loại chất thải y tế Thông tư 20/2021",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Hộp an toàn kim cứng, không thủng, đặt đúng vị trí; không quá 3/4 đầy",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Khu thu gom chất thải có biển cảnh báo sinh học, hóa học; không được vào tự do",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Phân vùng chất thải lây nhiễm/thông thường/hóa học/phóng xạ theo quy định",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Thùng rác từng màu đặt đúng vị trí quy định; dán nhãn loại chất thải",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Túi rác mỗi loại đặt sẵn trong thùng, dễ thay; không tìm kiếm mất thời gian",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi sắp hết túi/thùng đúng loại, nhận biết ngay qua cơ số tồn kho",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Khu thu gom gọn gàng; không có thùng tràn, rác vương vãi ngoài thùng",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Thùng rác, khu thu gom được khử khuẩn bề mặt ≥1 lần/ngày theo quy trình KSNK",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hôi nồng từ khu thu gom thoát ra khu vực điều trị",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có dịch, chất lỏng tràn ra sàn khu thu gom",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có SOP phân loại và xử lý từng loại chất thải; phân công NV phụ trách; 100% biết",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Nhật ký thu gom chất thải điền đầy đủ mỗi ngày (số túi, khối lượng, giờ chuyển)",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Khoa KSNK/NV phụ trách kiểm tra khu xử lý ≥1 lần/ngày; ghi sổ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố phân loại sai, tràn đổ; có phân tích nguyên nhân và phòng ngừa",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng báo cáo khối lượng chất thải từng loại; đề xuất giảm phát sinh",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định lịch chuyển chất thải hàng ngày; xe chuyển đúng giờ, đúng tuyến",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "18. Khu xử lý rác thải / KSNK",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Khu xử lý luôn đủ túi/thùng đúng loại, sẵn sàng thu gom liên tục",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có hồ sơ, tài liệu hết thời hạn lưu trữ chưa được hủy theo quy định",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có hộp, cặp hồ sơ hỏng, rách không còn dùng được lẫn với hồ sơ đang lưu",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ lưu hồ sơ, tài liệu thuộc danh mục lưu trữ; không có đồ vật cá nhân, vật dụng thừa trong kho",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Giá kệ chắc chắn, đúng tải trọng; hồ sơ nặng để kệ thấp, không có nguy cơ đổ sập",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Lối đi giữa các dãy kệ thông thoáng ≥0.8m; không có vật cản lối thoát hiểm",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Kho đáp ứng điều kiện bảo quản: nhiệt độ, độ ẩm, ánh sáng theo quy định lưu trữ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Mỗi hộp/cặp hồ sơ có nhãn ghi rõ: tên loại hồ sơ, năm, số thứ tự, thời hạn lưu",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Hồ sơ sắp xếp theo quy tắc thống nhất (năm, khoa, số bệnh án); tìm được trong 3 phút",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Sơ đồ kho dán tại cửa vào; ô/kệ có ký hiệu vị trí rõ ràng để tra cứu nhanh",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Kho gọn gàng, hồ sơ thẳng hàng trên kệ; không có hồ sơ rời vương vãi dưới sàn",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Kệ, hộp hồ sơ, sàn kho không có bụi, ẩm mốc; tổng vệ sinh ≥1 lần/tháng",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi ẩm mốc, mùi giấy mục trong kho",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Không có rác, bao bì, đồ ăn thức uống trong kho lưu trữ",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có danh mục hồ sơ lưu trữ, quy định thời hạn từng loại; phân công NV phụ trách kho",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Sổ theo dõi mượn/trả hồ sơ được ghi đầy đủ; ký nhận khi mượn và khi trả",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo/NV phụ trách kiểm tra kho ≥1 lần/tháng; ghi sổ kiểm tra",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận sự cố hồ sơ thất lạc, hư hỏng; có biên bản và biện pháp phòng ngừa",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng năm rà soát danh mục, tiến hành hủy hồ sơ hết hạn theo đúng quy trình pháp lý",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra điều kiện bảo quản kho (nhiệt độ, độ ẩm) định kỳ; ghi nhật ký",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "19. Kho hồ sơ / lưu trữ bệnh án",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Kho hồ sơ luôn sẵn sàng phục vụ tra cứu; hồ sơ được tìm và cung cấp trong thời gian quy định",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (1)",
+  "tc": "Không có dụng cụ vệ sinh hỏng, hết hạn sử dụng hoặc không còn dùng được trong nhà vệ sinh",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (2)",
+  "tc": "Không có hóa chất tẩy rửa, thuốc khử mùi không có nhãn hoặc hết hạn",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S1",
+  "s_name": "Sàng lọc",
+  "s_color": "#D85A30",
+  "s_lt": "#FAECE7",
+  "sub": "3 Không (3)",
+  "tc": "Chỉ để đúng dụng cụ, hóa chất cần thiết; không có đồ cá nhân, đồ thừa trong khu vực nhà vệ sinh",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT1",
+  "tc": "Sàn nhà vệ sinh không trơn trượt; có biển cảnh báo ướt/nguy hiểm khi cần thiết",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT2",
+  "tc": "Thiết bị điện (đèn, quạt) trong nhà vệ sinh an toàn; không có dây điện hở",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "AT3",
+  "tc": "Thùng rác có nắp đậy; túi rác đúng màu; không để chất thải lây nhiễm lẫn rác thông thường",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT1",
+  "tc": "Dụng cụ vệ sinh (chổi, cây lau, giẻ lau) có giá/móc treo cố định, dán nhãn riêng từng khu vực",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT2",
+  "tc": "Hóa chất tẩy rửa, nước sát khuẩn tay được đặt đúng vị trí quy định; dán nhãn tên và nồng độ",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "TT3",
+  "tc": "Khi thiếu vật tư tiêu hao (giấy vệ sinh, xà phòng, túi rác), nhận biết ngay qua cơ số tối thiểu",
+  "thu_tu": 6
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S2",
+  "s_name": "Sắp xếp",
+  "s_color": "#BA7517",
+  "s_lt": "#FAEEDA",
+  "sub": "MQ",
+  "tc": "Nhà vệ sinh gọn gàng; không có đồ vật cá nhân, quần áo phơi hoặc vật dụng không liên quan",
+  "thu_tu": 7
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (1)",
+  "tc": "Sàn, bệ xí, bồn rửa tay, gương, vòi nước không có vết bẩn, cặn, mốc sau mỗi ca vệ sinh",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (2)",
+  "tc": "Không có mùi hôi, mùi amoniac thoát ra ngoài khu vực nhà vệ sinh",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S3",
+  "s_name": "Sạch sẽ",
+  "s_color": "#1D9E75",
+  "s_lt": "#E1F5EE",
+  "sub": "3 Không (3)",
+  "tc": "Thùng rác không đầy quá 2/3; không có rác vương vãi trên sàn",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(1)",
+  "tc": "Có lịch vệ sinh nhà vệ sinh theo ca (≥3 lần/ngày); phân công hộ lý/NV vệ sinh phụ trách",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(2)",
+  "tc": "Bảng theo dõi vệ sinh dán tại cửa; hộ lý ký nhận sau mỗi lần dọn",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(3)",
+  "tc": "Lãnh đạo khoa kiểm tra nhà vệ sinh ≥1 lần/tuần; ghi sổ kiểm tra",
+  "thu_tu": 3
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(4)",
+  "tc": "Ghi nhận phản ánh của người bệnh/người nhà về nhà vệ sinh; xử lý trong 24h",
+  "thu_tu": 4
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S4",
+  "s_name": "Săn sóc",
+  "s_color": "#185FA5",
+  "s_lt": "#E6F1FB",
+  "sub": "SS(5)",
+  "tc": "Hàng tháng kiểm tra tình trạng thiết bị (vòi nước, bồn cầu, đèn), đề xuất sửa chữa kịp thời",
+  "thu_tu": 5
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(1)",
+  "tc": "Thực hiện tốt S1–S4 nêu trên",
+  "thu_tu": 1
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(2)",
+  "tc": "Có quy định kiểm tra hóa chất, vật tư vệ sinh định kỳ; bổ sung kịp thời khi sắp hết",
+  "thu_tu": 2
+ },
+ {
+  "vitri_ten": "20. Nhà vệ sinh",
+  "s_id": "S5",
+  "s_name": "Sẵn sàng",
+  "s_color": "#534AB7",
+  "s_lt": "#EEEDFE",
+  "sub": "SN(3)",
+  "tc": "Nhà vệ sinh luôn sạch sẽ, đủ giấy vệ sinh, xà phòng, nước sát khuẩn; sẵn sàng phục vụ 24/7",
+  "thu_tu": 3
+ }
+]
