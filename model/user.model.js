@@ -25,6 +25,10 @@ class User extends BaseModel {
 
     const LichPhanCong = require("./lichPhanCong.model");
     this.hasMany(LichPhanCong, { foreignKey: "nguoi_thuc_hien_id", as: "lich_phan_cong", targetKey: "id" });
+
+    // Mỗi nhân viên thuộc 1 khoa/phòng/trung tâm
+    const Khoa = require("./khoa.model");
+    this.belongsTo(Khoa, { foreignKey: "khoa_id", as: "khoa", targetKey: "id" });
   }
 }
 
@@ -41,7 +45,17 @@ const attributes = {
   },
   email: {
     type: DataTypes.STRING(255),
-    allowNull: false,
+    allowNull: true,
+    defaultValue: null,
+  },
+  khoa_id: {
+    type: DataTypes.INTEGER(10).UNSIGNED,
+    allowNull: true,
+    defaultValue: null,
+    references: {
+      model: "khoa",
+      key: "id",
+    },
   },
   mobile: {
     type: DataTypes.STRING(255),

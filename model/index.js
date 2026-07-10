@@ -85,6 +85,26 @@ for (const m in sequelize.models) {
       }
     }
 
+    // Bổ sung cột user.khoa_id cho DB cũ (sync không tự ALTER bảng có sẵn)
+    const descUser = await qi.describeTable("user");
+    if (!descUser.khoa_id) {
+      await qi.addColumn("user", "khoa_id", {
+        type: DataTypes.INTEGER(10).UNSIGNED,
+        allowNull: true,
+      });
+      console.log("Đã thêm cột user.khoa_id");
+    }
+
+    // Bổ sung cột lich_phan_cong.dot_danh_gia_id cho DB cũ (sync không tự ALTER bảng có sẵn)
+    const descLichPhanCong = await qi.describeTable("lich_phan_cong");
+    if (!descLichPhanCong.dot_danh_gia_id) {
+      await qi.addColumn("lich_phan_cong", "dot_danh_gia_id", {
+        type: DataTypes.INTEGER(10).UNSIGNED,
+        allowNull: true,
+      });
+      console.log("Đã thêm cột lich_phan_cong.dot_danh_gia_id");
+    }
+
     console.log("Đồng bộ bảng (sync) thành công.");
   } catch (err) {
     console.error("Lỗi đồng bộ bảng:", err.message);
