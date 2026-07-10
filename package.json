@@ -10,7 +10,8 @@
     "seed": "node scripts/seedRolePermission.js",
     "seed:khoa": "node scripts/seedKhoa.js",
     "seed:vitri": "node scripts/seedVitriType.js",
-    "seed:checklist": "node scripts/seedChecklistItem.js"
+    "seed:checklist": "node scripts/seedChecklistItem.js",
+    "migrate:lich-dot-danh-gia": "node scripts/addDotDanhGiaIdToLichPhanCong.js"
   },
   "repository": {
     "type": "git",

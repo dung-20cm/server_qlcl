@@ -8,6 +8,7 @@ const path = require("path");
 const pathFile = require("path");
 const fs = require("fs");
 const multer = require("multer");
+const { Readable } = require("stream");
 const { ERROR_MESSAGE } = require("./config/error");
 const { isAuthAdmin } = require("./middleware/auth");
 
@@ -42,41 +43,47 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //config static
 app.use(express.static(path.join(__dirname, "./static")));
 
-const storage = multer.diskStorage({
-  destination: pathFile.join(
-    __dirname,
-    process.env.DIST_DIR || "",
-    "static/uploads/",
-  ),
-  filename: (req, file, cb) => {
-    let uploadedFileName;
-    fs.stat(
-      pathFile.join(
-        __dirname,
-        process.env.DIST_DIR || "",
-        `static/uploads/${file.originalname.replace(/["'()\ ]/g, "")}`,
-      ),
-      (err) => {
-        if (err === null) {
-          uploadedFileName = `${Date.now()}-${file.originalname.replace(
-            /["'()\ ]/g,
-            "",
-          )}`;
-        } else if (err.code === "ENOENT") {
-          uploadedFileName = `${Date.now()}-${file.originalname.replace(
-            /["'()\ ]/g,
-            "",
-          )}`;
-        } else {
-          // logger.info('Some other error: ', err);
-          console.log("error", err);
-        }
+// --- (ĐANG TẮT) Lưu ảnh vào static/uploads trên đĩa server — xem
+// UPLOAD_LOCAL_STORAGE_README.txt để bật lại (ghi file tạm ra đĩa trước khi đẩy Cloudinary).
+// const storage = multer.diskStorage({
+//   destination: pathFile.join(
+//     __dirname,
+//     process.env.DIST_DIR || "",
+//     "static/uploads/",
+//   ),
+//   filename: (req, file, cb) => {
+//     let uploadedFileName;
+//     fs.stat(
+//       pathFile.join(
+//         __dirname,
+//         process.env.DIST_DIR || "",
+//         `static/uploads/${file.originalname.replace(/["'()\ ]/g, "")}`,
+//       ),
+//       (err) => {
+//         if (err === null) {
+//           uploadedFileName = `${Date.now()}-${file.originalname.replace(
+//             /["'()\ ]/g,
+//             "",
+//           )}`;
+//         } else if (err.code === "ENOENT") {
+//           uploadedFileName = `${Date.now()}-${file.originalname.replace(
+//             /["'()\ ]/g,
+//             "",
+//           )}`;
+//         } else {
+//           // logger.info('Some other error: ', err);
+//           console.log("error", err);
+//         }
+//
+//         cb(null, uploadedFileName);
+//       },
+//     );
+//   },
+// });
 
-        cb(null, uploadedFileName);
-      },
-    );
-  },
-});
+// Mac dinh: giu file trong RAM (khong ghi dia) roi day thang buffer len Cloudinary --
+// tiet kiem dung luong o cung server. Bat lai luu dia: xem UPLOAD_LOCAL_STORAGE_README.txt
+const storage = multer.memoryStorage();
 
 const uploadImage = multer({
   storage,
@@ -149,11 +156,18 @@ app.post("/api/upload/uploadImage", isAuthAdmin, async (req, res) => {
   try {
     uploadImage.any()(req, null, async (err) => {
       if (err) {
+        // fileFilter tra loi ERR_6006 khi sai duoi anh; multer tra code LIMIT_FILE_SIZE khi qua dung luong
+        const isBadType = err.message === "ERR_6006";
+        const isTooLarge = err.code === "LIMIT_FILE_SIZE";
         return res.send({
           code: 400,
           signal: 0,
           errorCode: ERROR_MESSAGE.ERROR,
-          message: "Upload failed!",
+          message: isBadType
+            ? "Chỉ chấp nhận file ảnh định dạng .png, .jpg, .jpeg, .webp, .svg!"
+            : isTooLarge
+              ? "Ảnh vượt quá dung lượng cho phép (tối đa 50MB)!"
+              : "Tải ảnh lên thất bại!",
         });
       }
 
@@ -162,33 +176,38 @@ app.post("/api/upload/uploadImage", isAuthAdmin, async (req, res) => {
           code: 400,
           signal: 0,
           errorCode: ERROR_MESSAGE.REQUIRED_PARAMS,
-          message: "Upload failed!",
+          message: "Vui lòng chọn ít nhất 1 ảnh để tải lên!",
         });
       }
 
-      const filePaths = {};
-      let file = req.files[0]; // Lấy tệp đầu tiên (bạn có thể lặp qua tất cả các tệp nếu cần)
+      const file = req.files[0]; // Lấy tệp đầu tiên (bạn có thể lặp qua tất cả các tệp nếu cần)
 
-      // Upload tệp lên Cloudinary
+      // File chỉ nằm trong RAM (file.buffer, multer.memoryStorage) -- đẩy thẳng lên Cloudinary
+      // qua upload_stream, KHÔNG ghi ra static/uploads/ (đỡ tốn dung lượng đĩa server).
       try {
-        const result = await cloudinary.uploader.upload(file.path, {
-          folder: "uploads",
+        const result = await new Promise((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            { folder: "uploads" },
+            (uploadError, uploadResult) => {
+              if (uploadError) return reject(uploadError);
+              resolve(uploadResult);
+            },
+          );
+          Readable.from(file.buffer).pipe(uploadStream);
         });
 
-        // Lưu URL từ Cloudinary
-        filePaths[file.fieldname] = result.url;
-
+        // FE (CMS_Dashboard_QLCL/src/features/qlcl/api.ts -> uploadImage()) đọc data.url hoặc
+        // data.secure_url -- trả cả 2 khớp chuẩn envelope {statusCode, message, data} toàn hệ thống.
         return res.status(200).send({
-          code: 200,
-          signal: 1,
-          message: "Upload success!",
-          data: { filePaths },
+          statusCode: 200,
+          message: "Tải ảnh lên thành công!",
+          data: { url: result.secure_url, secure_url: result.secure_url },
         });
       } catch (uploadError) {
         return res.status(500).send({
           code: 500,
           signal: 0,
-          message: "Upload to Cloudinary failed!",
+          message: "Tải ảnh lên Cloudinary thất bại!",
           error: uploadError.message,
         });
       }
@@ -197,7 +216,7 @@ app.post("/api/upload/uploadImage", isAuthAdmin, async (req, res) => {
     return res.send({
       code: 400,
       signal: 0,
-      message: "Error Upload!",
+      message: "Có lỗi xảy ra khi tải ảnh lên!",
     });
   }
 });

@@ -6,7 +6,7 @@ const {
     DanhGia, DanhGiaChiTiet, Khoa, VitriType, VitriChiTiet, User, ChecklistItem
 } = require("../model");
 
-const getListDanhGia = async (data) => {
+const getListDanhGia = async (data, authUser) => {
     const paging = data.page && data.limit ? Paging(data.page, data.limit) : {};
     let where = { active: 1 };
     if (data.khoa_id) where.khoa_id = data.khoa_id;
@@ -18,6 +18,9 @@ const getListDanhGia = async (data) => {
         if (data.tu_ngay) where.ngay_danh_gia[Op.gte] = data.tu_ngay;
         if (data.den_ngay) where.ngay_danh_gia[Op.lte] = data.den_ngay;
     }
+    // Trưởng khoa / Nhân viên (không full scope) chỉ xem đánh giá của khoa mình,
+    // bất kể client có truyền khoa_id khác hay không.
+    if (authUser && !authUser.isFullScope) where.khoa_id = authUser.khoa_id;
 
     const res = await DanhGia.findAll({
         where: { ...where },
@@ -93,11 +96,16 @@ const getDanhGiaById = async (id) => {
 // Tạo 1 phiếu đánh giá kèm toàn bộ chi tiết tiêu chí trong 1 transaction.
 // payload: { khoa_id, vitri_type_id, vitri_chi_tiet_id, nguoi_danh_gia_id,
 //   ngay_danh_gia, dot_danh_gia, chi_tiet: [{ checklist_item_id, ket_qua, ghi_chu }] }
-const createDanhGia = async (data) => {
+const createDanhGia = async (data, authUser) => {
     const { chi_tiet, ...header } = data;
 
     if (!Array.isArray(chi_tiet) || chi_tiet.length === 0) {
         throw new Error(ERROR_MESSAGE.REQUIRED_PARAMS);
+    }
+
+    // Trưởng khoa / Nhân viên (không full scope) chỉ được tạo đánh giá cho khoa của chính mình.
+    if (authUser && !authUser.isFullScope && Number(header.khoa_id) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
     }
 
     const so_tieu_chi_tong = chi_tiet.length;
@@ -128,11 +136,16 @@ const createDanhGia = async (data) => {
 }
 
 // Xoá mềm: chỉ ẩn (active=0), giữ dữ liệu lịch sử (KP, ảnh đã liên kết đánh giá này)
-const deleteDanhGia = async (id) => {
+const deleteDanhGia = async (id, authUser) => {
     const check = await DanhGia.findOne({ where: { id } })
 
     if (!check) {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_DANH_GIA)
+    }
+
+    // Trưởng khoa (không full scope) chỉ được xoá đánh giá của khoa mình.
+    if (authUser && !authUser.isFullScope && Number(check.khoa_id) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
     }
 
     const del = await check.update({ active: 0 })

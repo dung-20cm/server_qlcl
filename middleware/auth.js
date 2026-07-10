@@ -4,6 +4,22 @@ const _CONF = require("../config/auth.config");
 const bcrypt = require('bcryptjs');
 const { ERROR_MESSAGE } = require("../config/error");
 const { User, UserRole, RolePermission, Permission } = require('../model')
+const { FULL_SCOPE_SLUGS } = require('../middleware/actionDefault')
+
+// Lấy toàn bộ slug quyền (chưa bị thu hồi) của 1 role — dùng để gắn vào req.authUser
+// và cho service layer tự quyết định phạm vi dữ liệu (khoa mình / tất cả khoa).
+const getPermissionSlugsByRole = async (roleId) => {
+  const rows = await RolePermission.findAll({
+    where: { role_id: roleId, del: 0 },
+    include: [{ model: Permission, as: 'permission', where: { del: 0 } }],
+  })
+  return rows.map((r) => r.permission.slug)
+}
+
+// "Full scope" = có ít nhất 1 slug trong FULL_SCOPE_SLUGS (Admin nắm mọi slug nên
+// luôn full scope; Phòng QLCL nắm các slug "_TAT_CA_KHOA"/"DANH_GIA_CAC_KHOA"...).
+// Dùng ở service layer: full scope -> trả về dữ liệu mọi khoa; ngược lại -> chỉ khoa của req.authUser.khoa_id.
+const isFullScope = (permissions) => (permissions || []).some((s) => FULL_SCOPE_SLUGS.includes(s))
 
 const checkToken = (req, res, next) => {
   const token = req.body.token || req.query.token || req.headers['token']
@@ -44,10 +60,9 @@ const generateToken = async (data, secretKey = _CONF.SECRET, expiresIn = '30d') 
   return jwt.sign(data, secretKey, { expiresIn });
 }
 
+// `action` có thể là 1 slug (string) hoặc mảng slug (OR - chỉ cần khớp 1 trong số đó)
 const check_permission = (action) => {
-  if (!action) {
-    action = '';
-  }
+  const actionList = (Array.isArray(action) ? action : [action]).filter(Boolean);
   return async (req, res, next) => {
     try {
       let { token } = req.headers;
@@ -106,7 +121,7 @@ const check_permission = (action) => {
           message: 'Tài khoản chưa được phân vai trò!'
         });
       }
-      if (!action) {
+      if (actionList.length === 0) {
         return res.send({
           signal: 0,
           code: 500,
@@ -114,27 +129,25 @@ const check_permission = (action) => {
         });
       }
 
-      let list_permission = await RolePermission.findAll({
-        where: {
-          role_id: check_role.role_id,
-        },
-        include: [{
-          model: Permission,
-          as: 'permission',
-          where: {
-            slug: action,
-            del: 0
-          }
-        }]
-      })
+      // Toàn bộ quyền (chưa bị thu hồi) của role này — dùng để check quyền + gắn vào req.authUser
+      const permissions = await getPermissionSlugsByRole(check_role.role_id);
 
-      if (!list_permission || list_permission.length <= 0) {
+      const allowed = actionList.some((a) => permissions.includes(a));
+      if (!allowed) {
         return res.send({
           signal: 0,
           code: 400,
           message: 'Bạn không có quyền truy nhập!'
         })
       }
+
+      req.authUser = {
+        id: userData.id,
+        khoa_id: userData.khoa_id ?? null,
+        roleId: check_role.role_id,
+        permissions,
+        isFullScope: isFullScope(permissions),
+      };
 
       next();
     } catch (error) {
@@ -149,6 +162,10 @@ const check_permission = (action) => {
   }
 }
 
+// Chỉ yêu cầu đã đăng nhập (không đòi 1 permission cụ thể) — dùng cho các API
+// xem chung mà nhiều role cùng dùng (xem lịch, xem đánh giá,...). Vẫn gắn
+// req.authUser {khoa_id, permissions, isFullScope} để SERVICE LAYER tự lọc dữ
+// liệu theo phạm vi khoa (không phải ai gọi API này cũng thấy được TẤT CẢ khoa).
 const isAuthAdmin = async (req, res, next) => {
   try {
     let { token } = req.headers;
@@ -192,6 +209,21 @@ const isAuthAdmin = async (req, res, next) => {
     }
 
     req.userToken = dataToken;
+
+    // Gắn khoa_id + danh sách quyền hiện có (nếu đã được phân vai trò) để service dùng để lọc theo khoa
+    let permissions = [];
+    const check_role = await UserRole.findOne({ where: { user_id: dataToken.userid, del: 0 } });
+    if (check_role) {
+      permissions = await getPermissionSlugsByRole(check_role.role_id);
+    }
+    req.authUser = {
+      id: userData.id,
+      khoa_id: userData.khoa_id ?? null,
+      roleId: check_role ? check_role.role_id : null,
+      permissions,
+      isFullScope: isFullScope(permissions),
+    };
+
     next()
   } catch (error) {
     console.log("IsAuthAdmin Error ====> ", error);
@@ -211,6 +243,7 @@ module.exports = {
   checkPassword,
   generateToken,
   check_permission,
-  isAuthAdmin
-
+  isAuthAdmin,
+  getPermissionSlugsByRole,
+  isFullScope,
 };

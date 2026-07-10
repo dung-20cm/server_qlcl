@@ -53,7 +53,9 @@ const getAnh5sTuanById = async (id) => {
 // Tạo/sửa 1 dòng anh_5s_tuan kèm danh sách vị trí đã chụp trong tuần đó,
 // trong 1 transaction (giống cách làm ở createDanhGia).
 const createUpdateAnh5sTuan = async (data) => {
-    const { vitri_type_ids, ...header } = data;
+    // Chấp nhận cả 2 tên field: `vitri_type_ids` (chuẩn) và `vi_tri` (CMS cũ gửi lên)
+    const { vitri_type_ids, vi_tri, ...header } = data;
+    const vitriIds = Array.isArray(vitri_type_ids) ? vitri_type_ids : vi_tri;
 
     return await sequelize.transaction(async (t) => {
         let anh5s;
@@ -69,11 +71,11 @@ const createUpdateAnh5sTuan = async (data) => {
         }
 
         // Nếu có gửi danh sách vị trí thì thay toàn bộ danh sách cũ bằng danh sách mới
-        if (Array.isArray(vitri_type_ids)) {
+        if (Array.isArray(vitriIds)) {
             await Anh5sTuanVitri.destroy({ where: { anh_5s_tuan_id: anh5s.id }, transaction: t });
 
-            if (vitri_type_ids.length > 0) {
-                const rows = vitri_type_ids.map(vitri_type_id => ({
+            if (vitriIds.length > 0) {
+                const rows = vitriIds.map(vitri_type_id => ({
                     anh_5s_tuan_id: anh5s.id,
                     vitri_type_id,
                 }));

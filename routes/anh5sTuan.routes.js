@@ -1,15 +1,23 @@
-const { Anh5sTuanController } = require("../controllers");
+const { Anh5sTuanController, BaoCaoZalo5sController } = require("../controllers");
 const { Router } = require("express");
-const { Response } = require("../config/handle_response");
-const { isAuthAdmin } = require("../middleware/auth");
+const { Response, ResponseExportExcel } = require("../config/handle_response");
+const { check_permission } = require("../middleware/auth");
+const { QUAN_LY_ANH_5S_TAT_CA_KHOA } = require("../middleware/actionDefault");
 
 const svRouter = new Router();
 
-// Ảnh 5S theo tuần: Khoa tự nộp báo cáo hàng tuần, Phòng QLCL xem/duyệt toàn
-// viện - chỉ yêu cầu đã đăng nhập, giống cách làm ở route đánh giá/khắc phục.
-svRouter.get("/get-list-anh-5s-tuan", isAuthAdmin, Response(Anh5sTuanController.getListAnh5sTuan));
-svRouter.get("/get-anh-5s-tuan/:id", isAuthAdmin, Response(Anh5sTuanController.getAnh5sTuanById));
-svRouter.post("/create-update-anh-5s-tuan", isAuthAdmin, Response(Anh5sTuanController.createUpdateAnh5sTuan));
-svRouter.post("/delete-anh-5s-tuan/:id", isAuthAdmin, Response(Anh5sTuanController.deleteAnh5sTuan));
+// Nhóm Zalo 5S / Ảnh 5S: theo yêu cầu chỉ Phòng QLCL (toàn viện) và Admin được
+// xem/quản lý — Trưởng khoa và Nhân viên KHÔNG có quyền vào mục này.
+svRouter.get("/get-list-anh-5s-tuan", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(Anh5sTuanController.getListAnh5sTuan));
+svRouter.get("/get-anh-5s-tuan/:id", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(Anh5sTuanController.getAnh5sTuanById));
+svRouter.post("/create-update-anh-5s-tuan", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(Anh5sTuanController.createUpdateAnh5sTuan));
+svRouter.post("/delete-anh-5s-tuan/:id", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(Anh5sTuanController.deleteAnh5sTuan));
+
+// Xuất báo cáo Nhóm Zalo 5S theo mẫu 5S_Dashboard_BVTB_v4.html:
+// - HTML: mở lên có nút "🖨 In / Lưu PDF" (?inline=1 để mở thẳng trong tab)
+// - Word: file .doc HTML-Word, căn lề NĐ 30/2020/NĐ-CP
+// Query: ?tuan=YYYY-MM-DD (thứ 2 đầu tuần) — bỏ trống = tổng hợp tất cả tuần
+svRouter.get("/export-bao-cao-html", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), ResponseExportExcel(BaoCaoZalo5sController.exportBaoCaoHTML));
+svRouter.get("/export-bao-cao-word", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), ResponseExportExcel(BaoCaoZalo5sController.exportBaoCaoWord));
 
 module.exports = svRouter;

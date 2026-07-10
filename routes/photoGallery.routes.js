@@ -1,15 +1,27 @@
 const { PhotoGalleryController } = require("../controllers");
 const { Router } = require("express");
 const { Response } = require("../config/handle_response");
-const { isAuthAdmin } = require("../middleware/auth");
+const { check_permission } = require("../middleware/auth");
+const { LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA } = require("../middleware/actionDefault");
 
 const svRouter = new Router();
 
+// Bảng photo_gallery dùng cho 2 luồng khác nhau:
+// 1) Ảnh đính kèm khi LÀM ĐÁNH GIÁ (BangKiem.tsx, danh_gia_id có giá trị) - ai
+//    làm đánh giá được thì đính kèm ảnh được (Nhân viên/Trưởng khoa/QLCL/Admin).
+// 2) Ảnh gửi độc lập theo dõi Nhóm Zalo 5S (Anh5S.tsx, khoa_id có giá trị,
+//    danh_gia_id null) - chỉ Phòng QLCL/Admin (xem, sửa, xoá).
+//
 // Lưu ý: các route này nhận url_anh đã có sẵn (link ảnh đã upload). Chưa có
 // route upload ảnh thật lên Cloudinary - sẽ bổ sung riêng khi làm phần đó.
-svRouter.get("/get-list-photo-gallery", isAuthAdmin, Response(PhotoGalleryController.getListPhotoGallery));
-svRouter.post("/create-photo-gallery", isAuthAdmin, Response(PhotoGalleryController.createPhotoGallery));
-svRouter.post("/create-many-photo-gallery", isAuthAdmin, Response(PhotoGalleryController.createManyPhotoGallery));
-svRouter.post("/delete-photo-gallery/:id", isAuthAdmin, Response(PhotoGalleryController.deletePhotoGallery));
+
+// Xem/sửa/xoá: chỉ Anh5S.tsx (QLCL/Admin) dùng tới các route này.
+svRouter.get("/get-list-photo-gallery", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(PhotoGalleryController.getListPhotoGallery));
+svRouter.post("/update-photo-gallery", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(PhotoGalleryController.updatePhotoGallery));
+svRouter.post("/delete-photo-gallery/:id", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(PhotoGalleryController.deletePhotoGallery));
+
+// Tạo ảnh: dùng chung cho cả 2 luồng ở trên -> chấp nhận permission của luồng nào cũng được.
+svRouter.post("/create-photo-gallery", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA]), Response(PhotoGalleryController.createPhotoGallery));
+svRouter.post("/create-many-photo-gallery", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA]), Response(PhotoGalleryController.createManyPhotoGallery));
 
 module.exports = svRouter;

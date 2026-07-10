@@ -34,7 +34,8 @@ const ERROR_MESSAGE = {
   NOT_ACTIVE_ACCOUNT: "Tài khoản chưa hoạt động!",
   ERROR_PAYMENT: "Có lỗi xảy ra khi thanh toán!",
   VOUCHER_EXIST: 'Mã voucher đã tồn tại. Vui lòng nhập mã khác!',
-  INVALID_CREATE_CATEGORY: 'Danh mục đã tồn tại'
+  INVALID_CREATE_CATEGORY: 'Danh mục đã tồn tại',
+  FORBIDDEN: 'Bạn không có quyền thao tác với dữ liệu của khoa/phòng khác',
 };
 
 module.exports = {

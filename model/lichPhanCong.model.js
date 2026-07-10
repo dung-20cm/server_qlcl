@@ -12,6 +12,9 @@ class LichPhanCong extends BaseModel {
 
     const User = require("./user.model");
     this.belongsTo(User, { foreignKey: "nguoi_thuc_hien_id", as: "nguoi_thuc_hien", targetKey: "id" });
+
+    const DotDanhGia = require("./dotDanhGia.model");
+    this.belongsTo(DotDanhGia, { foreignKey: "dot_danh_gia_id", as: "dot", targetKey: "id" });
   }
 }
 
@@ -30,6 +33,10 @@ const attributes = {
     type: DataTypes.INTEGER(10).UNSIGNED,
     allowNull: true, // NULL = áp dụng cho tất cả vị trí của khoa
   },
+  dot_danh_gia_id: {
+    type: DataTypes.INTEGER(10).UNSIGNED,
+    allowNull: true, // FK -> dot_danh_gia.id (đợt đánh giá lịch này thuộc về, chọn ở FE thay cho "loại lịch" cố định)
+  },
   loai_lich: {
     type: DataTypes.STRING(20),
     allowNull: false,
@@ -41,7 +48,7 @@ const attributes = {
   },
   ngay_thuc_hien: {
     type: DataTypes.DATEONLY,
-    allowNull: true, // chỉ dùng khi loai_lich = mot_lan
+    allowNull: true, // mot_lan/dot_xuat: ngày thực hiện. dinh_ky: ngày bắt đầu áp dụng (mốc), lặp lại hàng tuần theo thu_trong_tuan kể từ ngày này trở đi.
   },
   nguoi_thuc_hien_id: {
     type: DataTypes.INTEGER(10).UNSIGNED,
