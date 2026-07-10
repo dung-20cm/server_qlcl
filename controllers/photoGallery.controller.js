@@ -8,6 +8,10 @@ const createPhotoGallery = async (req) => {
     return await photoGalleryServices.createPhotoGallery(req.body);
 }
 
+const updatePhotoGallery = async (req) => {
+    return await photoGalleryServices.updatePhotoGallery(req.body);
+}
+
 const createManyPhotoGallery = async (req) => {
     return await photoGalleryServices.createManyPhotoGallery(req.body);
 }
@@ -20,6 +24,7 @@ const deletePhotoGallery = async (req) => {
 module.exports = {
     getListPhotoGallery,
     createPhotoGallery,
+    updatePhotoGallery,
     createManyPhotoGallery,
     deletePhotoGallery
 }

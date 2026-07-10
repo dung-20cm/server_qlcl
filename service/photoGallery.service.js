@@ -1,10 +1,22 @@
+const { Op } = require("sequelize");
 const { ERROR_MESSAGE } = require("../config/error");
-const { PhotoGallery, DanhGia, ChecklistItem, Khoa, VitriType } = require("../model");
+const { PhotoGallery, DanhGia, ChecklistItem, Khoa, VitriType, User } = require("../model");
 
 const getListPhotoGallery = async (data) => {
     let where = { active: 1 };
     if (data.danh_gia_id) where.danh_gia_id = data.danh_gia_id;
     if (data.checklist_item_id) where.checklist_item_id = data.checklist_item_id;
+    // Lọc trực tiếp trên field của chính ảnh (áp dụng cho cả ảnh gửi độc lập lẫn ảnh
+    // từ Bảng kiểm — vì khi tạo ảnh gắn danh_gia, FE cũng có thể gửi kèm khoa_id/vitri_type_id).
+    if (data.khoa_id) where.khoa_id = data.khoa_id;
+    if (data.vitri_type_id) where.vitri_type_id = data.vitri_type_id;
+    if (data.ket_qua) where.ket_qua = data.ket_qua;
+    if (data.tu_ngay || data.den_ngay) {
+        where.ngay_chup = {};
+        if (data.tu_ngay) where.ngay_chup[Op.gte] = data.tu_ngay;
+        if (data.den_ngay) where.ngay_chup[Op.lte] = data.den_ngay;
+    }
+    if (data.active === 'all') delete where.active;
 
     const res = await PhotoGallery.findAll({
         where: { ...where },
@@ -18,6 +30,9 @@ const getListPhotoGallery = async (data) => {
                 ]
             },
             { model: ChecklistItem, as: 'checklist_item', attributes: ['id', 'sub', 'tc'] },
+            { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
+            { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
+            { model: User, as: 'nguoi_gui', attributes: ['id', 'username', 'email'] },
         ]
     })
 
@@ -26,11 +41,31 @@ const getListPhotoGallery = async (data) => {
     return { rows: res, total }
 }
 
-// Thêm 1 ảnh (url_anh phải là link đã upload sẵn - chưa có route upload thật,
-// sẽ bổ sung khi làm phần upload ảnh lên Cloudinary).
+// Thêm 1 ảnh (url_anh phải là link đã upload sẵn - upload thật qua /api/upload/uploadImage).
+// 2 cách dùng:
+//  - Ảnh minh chứng gắn 1 lượt đánh giá: truyền danh_gia_id (+ checklist_item_id nếu cần).
+//  - Ảnh gửi độc lập (không qua Bảng kiểm): truyền khoa_id (bắt buộc), kèm
+//    vitri_type_id/ngay_chup/nguoi_gui_id/ket_qua/ghi_chu tuỳ chọn.
 const createPhotoGallery = async (data) => {
+    if (!data.danh_gia_id && !data.khoa_id) {
+        throw new Error(ERROR_MESSAGE.REQUIRED_PARAMS);
+    }
     const create = await PhotoGallery.create({ ...data, active: 1 })
     return create
+}
+
+// Sửa thông tin 1 ảnh gửi độc lập (khoa, vị trí, ngày, người gửi, kết quả, ghi chú).
+// Không cho sửa danh_gia_id/checklist_item_id (ảnh gắn lượt đánh giá thì cố định theo lượt đó).
+const updatePhotoGallery = async (data) => {
+    const check = await PhotoGallery.findOne({ where: { id: data.id } })
+
+    if (!check) {
+        throw new Error(ERROR_MESSAGE.NOT_FOUND_PHOTO_GALLERY)
+    }
+
+    const { id, danh_gia_id, checklist_item_id, ...rest } = data;
+    const update = await check.update({ ...rest })
+    return update
 }
 
 // Thêm nhiều ảnh cùng lúc cho 1 lần đánh giá
@@ -66,6 +101,7 @@ const deletePhotoGallery = async (id) => {
 module.exports = {
     getListPhotoGallery,
     createPhotoGallery,
+    updatePhotoGallery,
     createManyPhotoGallery,
     deletePhotoGallery
 }

@@ -84,6 +84,12 @@ const createUpdateVitriChiTiet = async (data) => {
         })
 
         if (check_trung) {
+            // Bản ghi trùng nhưng đã bị gỡ (soft-delete active=0) => kích hoạt lại
+            // thay vì báo lỗi, để cấu hình khoa - vị trí tick/untick được nhiều lần.
+            if (check_trung.active === 0) {
+                const reactivate = await check_trung.update({ ...data, active: 1 })
+                return reactivate
+            }
             throw new Error(ERROR_MESSAGE.VITRI_CHI_TIET_EXISTS)
         }
 

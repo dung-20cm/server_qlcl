@@ -21,6 +21,9 @@ class DanhGia extends BaseModel {
 
     const PhotoGallery = require("./photoGallery.model");
     this.hasMany(PhotoGallery, { foreignKey: "danh_gia_id", as: "anh", targetKey: "id" });
+
+    const DotDanhGia = require("./dotDanhGia.model");
+    this.belongsTo(DotDanhGia, { foreignKey: "dot_danh_gia_id", as: "dot", targetKey: "id" });
   }
 }
 
@@ -54,6 +57,10 @@ const attributes = {
   dot_danh_gia: {
     type: DataTypes.STRING(255),
     allowNull: true, // text tự nhập, ví dụ "Đợt 1 - Quý 1/2026"
+  },
+  dot_danh_gia_id: {
+    type: DataTypes.INTEGER(10).UNSIGNED,
+    allowNull: true, // FK -> dot_danh_gia.id (NULL với lượt đánh giá cũ chỉ có text)
   },
   so_tieu_chi_dat: {
     type: DataTypes.INTEGER(5),
