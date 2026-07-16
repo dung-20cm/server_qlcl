@@ -290,7 +290,12 @@ const changePassword = asyncHandler(async (data) => {
 });
 
 const getListUser = asyncHandler(async (req, authUser) => {
-  const paging = Paging(req.page, req.limit);
+  // Chỉ phân trang khi client CHỦ ĐỘNG truyền cả page và limit (giống pattern các
+  // endpoint khác, vd getListDanhGia) — trước đây gọi Paging() vô điều kiện, hàm
+  // này mặc định limit=10 khi thiếu tham số, khiến danh mục "toàn bộ user" (dùng
+  // làm catalog chọn người phụ trách ở nhiều trang) bị cắt còn 10 người bất kể
+  // tổng số tài khoản thật là bao nhiêu.
+  const paging = req.page && req.limit ? Paging(req.page, req.limit) : {};
   let where = {
     del: 0,
   };

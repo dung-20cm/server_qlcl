@@ -50,6 +50,12 @@ const attributes = {
     type: DataTypes.INTEGER(10).UNSIGNED,
     allowNull: false,
   },
+  // Cán bộ CÙNG tham gia đánh giá (ngoài nguoi_danh_gia_id là người chính) —
+  // lưu dạng chuỗi id nối bằng dấu phẩy (VD "5,12,13"), NULL nếu chỉ 1 người.
+  dong_danh_gia_ids: {
+    type: DataTypes.STRING(255),
+    allowNull: true,
+  },
   ngay_danh_gia: {
     type: DataTypes.DATEONLY,
     allowNull: false,

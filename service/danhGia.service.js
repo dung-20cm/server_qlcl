@@ -3,7 +3,7 @@ const { ERROR_MESSAGE } = require("../config/error");
 const { Paging } = require("../config/paging");
 const { sequelize } = require("../config/connect");
 const {
-    DanhGia, DanhGiaChiTiet, Khoa, VitriType, VitriChiTiet, User, ChecklistItem
+    DanhGia, DanhGiaChiTiet, Khoa, VitriType, VitriChiTiet, User, ChecklistItem, KhacPhuc
 } = require("../model");
 
 const getListDanhGia = async (data, authUser) => {
@@ -36,7 +36,68 @@ const getListDanhGia = async (data, authUser) => {
 
     const total = await DanhGia.count({ where: { ...where } })
 
-    return { rows: res, total }
+    // Tính sẵn tỷ lệ đạt từng nhóm S1..S5 cho mỗi lượt (dùng cho tab Xu hướng,
+    // Dashboard...) — 1 query duy nhất cho toàn bộ danh sách đang trả về, tránh N+1.
+    const ids = res.map(r => r.id);
+    const byDanhGia = {};
+    if (ids.length) {
+        const chiTiet = await DanhGiaChiTiet.findAll({
+            where: { danh_gia_id: { [Op.in]: ids } },
+            attributes: ['danh_gia_id', 'ket_qua', 'checklist_item_id'],
+            include: [{ model: ChecklistItem, as: 'checklist_item', attributes: ['s_id', 's_name', 's_color', 's_lt'] }],
+        });
+        for (const row of chiTiet) {
+            const ci = row.checklist_item;
+            const sId = ci?.s_id || 'KHONG_RO';
+            const dgId = row.danh_gia_id;
+            if (!byDanhGia[dgId]) byDanhGia[dgId] = {};
+            if (!byDanhGia[dgId][sId]) byDanhGia[dgId][sId] = { name: ci?.s_name, color: ci?.s_color, lt: ci?.s_lt, ok: 0, total: 0 };
+            byDanhGia[dgId][sId].total++;
+            if (row.ket_qua === 1) byDanhGia[dgId][sId].ok++;
+        }
+    }
+
+    let rows = res.map(r => {
+        const obj = r.toJSON();
+        const groups = byDanhGia[r.id] || {};
+        obj.sScores = Object.entries(groups).map(([id, v]) => ({
+            id, name: v.name, color: v.color, lt: v.lt, ok: v.ok, total: v.total,
+            pct: v.total ? Math.round((v.ok / v.total) * 100) : 0,
+        }));
+        return obj;
+    });
+
+    rows = await attachDongDanhGia(rows);
+
+    return { rows, total }
+}
+
+// Gắn danh sách cán bộ ĐỒNG đánh giá (dong_danh_gia_ids, chuỗi id nối dấu phẩy)
+// thành mảng object {id, username, email} — 1 query duy nhất cho cả danh sách,
+// tránh N+1 khi mỗi lượt đánh giá có nhiều đồng đánh giá khác nhau.
+async function attachDongDanhGia(rows) {
+    const idSet = new Set();
+    for (const r of rows) {
+        (r.dong_danh_gia_ids || '').split(',').forEach(s => {
+            const id = Number(s.trim());
+            if (id) idSet.add(id);
+        });
+    }
+    if (!idSet.size) return rows.map(r => ({ ...r, dong_danh_gia: [] }));
+
+    const users = await User.findAll({
+        where: { id: { [Op.in]: [...idSet] } },
+        attributes: ['id', 'username', 'email'],
+    });
+    const userMap = new Map(users.map(u => [u.id, u.toJSON()]));
+
+    return rows.map(r => ({
+        ...r,
+        dong_danh_gia: (r.dong_danh_gia_ids || '')
+            .split(',')
+            .map(s => userMap.get(Number(s.trim())))
+            .filter(Boolean),
+    }));
 }
 
 // Lấy 1 phiếu đánh giá kèm toàn bộ chi tiết từng tiêu chí, nhóm sẵn theo S
@@ -90,7 +151,8 @@ const getDanhGiaById = async (id) => {
     }
     Object.values(grouped).forEach(g => { g.pct = g.total ? Math.round((g.ok / g.total) * 100) : 0; });
 
-    return { ...data.toJSON(), sScores: Object.values(grouped) }
+    const [withDongDanhGia] = await attachDongDanhGia([data.toJSON()]);
+    return { ...withDongDanhGia, sScores: Object.values(grouped) }
 }
 
 // Tạo 1 phiếu đánh giá kèm toàn bộ chi tiết tiêu chí trong 1 transaction.
@@ -129,7 +191,30 @@ const createDanhGia = async (data, authUser) => {
             ket_qua: c.ket_qua,
             ghi_chu: c.ghi_chu || null,
         }));
-        await DanhGiaChiTiet.bulkCreate(rows, { transaction: t });
+        const chiTietRows = await DanhGiaChiTiet.bulkCreate(rows, { transaction: t });
+
+        // Tự động tạo hành động khắc phục cho MỌI tiêu chí không đạt (ket_qua = 0)
+        // — hạn xử lý mặc định +7 ngày kể từ ngày đánh giá, trạng thái "Chưa bắt đầu".
+        // (Trước đây không có bước này nên tab Tiến độ khắc phục luôn trống trừ khi
+        // ai đó tạo tay — không có UI tạo tay nào tồn tại.)
+        const ngayDanhGia = header.ngay_danh_gia ? new Date(header.ngay_danh_gia) : new Date();
+        const hanDate = new Date(ngayDanhGia);
+        hanDate.setDate(hanDate.getDate() + 7);
+        const han_xu_ly = hanDate.toISOString().slice(0, 10);
+        const tuan = `Tuần ${Math.ceil(ngayDanhGia.getDate() / 7)} - ${ngayDanhGia.getMonth() + 1}/${ngayDanhGia.getFullYear()}`;
+
+        const khacPhucRows = chiTietRows
+            .filter(ct => ct.ket_qua === 0)
+            .map(ct => ({
+                danh_gia_chi_tiet_id: ct.id,
+                trang_thai: 'Chưa bắt đầu',
+                han_xu_ly,
+                tuan,
+                active: 1,
+            }));
+        if (khacPhucRows.length) {
+            await KhacPhuc.bulkCreate(khacPhucRows, { transaction: t });
+        }
 
         return danhGia;
     });
@@ -152,9 +237,68 @@ const deleteDanhGia = async (id, authUser) => {
     return del
 }
 
+// Top 10 tiêu chí bị ✗ (không đạt) nhiều nhất, kèm breakdown theo khoa — dùng cho
+// tab Xu hướng (giúp Phòng QLCL phát hiện nhanh lỗi lặp lại nhiều nơi).
+const getTopTieuChiLoi = async (data, authUser) => {
+    let dgWhere = { active: 1 };
+    if (data.khoa_id) dgWhere.khoa_id = data.khoa_id;
+    if (data.vitri_type_id) dgWhere.vitri_type_id = data.vitri_type_id;
+    if (data.tu_ngay || data.den_ngay) {
+        dgWhere.ngay_danh_gia = {};
+        if (data.tu_ngay) dgWhere.ngay_danh_gia[Op.gte] = data.tu_ngay;
+        if (data.den_ngay) dgWhere.ngay_danh_gia[Op.lte] = data.den_ngay;
+    }
+    if (authUser && !authUser.isFullScope) dgWhere.khoa_id = authUser.khoa_id;
+
+    const dgList = await DanhGia.findAll({ where: dgWhere, attributes: ['id', 'khoa_id'] });
+    const idToKhoa = new Map(dgList.map(d => [d.id, d.khoa_id]));
+    const ids = dgList.map(d => d.id);
+    if (!ids.length) return { data: [], totalLuot: 0 };
+
+    const chiTiet = await DanhGiaChiTiet.findAll({
+        where: { danh_gia_id: { [Op.in]: ids }, ket_qua: 0 },
+        include: [{ model: ChecklistItem, as: 'checklist_item' }],
+    });
+
+    const khoaRows = await Khoa.findAll({ attributes: ['id', 'ten_khoa'] });
+    const khoaNameMap = new Map(khoaRows.map(k => [k.id, k.ten_khoa]));
+
+    const agg = new Map();
+    for (const row of chiTiet) {
+        const ci = row.checklist_item;
+        if (!ci) continue;
+        if (!agg.has(ci.id)) {
+            agg.set(ci.id, { checklist_item_id: ci.id, s_id: ci.s_id, s_name: ci.s_name, sub: ci.sub, tc: ci.tc, count: 0, byKhoa: new Map() });
+        }
+        const a = agg.get(ci.id);
+        a.count++;
+        const khoaName = khoaNameMap.get(idToKhoa.get(row.danh_gia_id)) || 'N/A';
+        a.byKhoa.set(khoaName, (a.byKhoa.get(khoaName) || 0) + 1);
+    }
+
+    const list = [...agg.values()]
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10)
+        .map(a => ({
+            checklist_item_id: a.checklist_item_id,
+            s_id: a.s_id,
+            s_name: a.s_name,
+            sub: a.sub,
+            tc: a.tc,
+            fail_count: a.count,
+            rate_pct: ids.length ? Math.round((a.count / ids.length) * 100) : 0,
+            by_khoa: [...a.byKhoa.entries()]
+                .map(([khoa, count]) => ({ khoa, count }))
+                .sort((x, y) => y.count - x.count),
+        }));
+
+    return { data: list, totalLuot: ids.length };
+}
+
 module.exports = {
     getListDanhGia,
     getDanhGiaById,
     createDanhGia,
-    deleteDanhGia
+    deleteDanhGia,
+    getTopTieuChiLoi,
 }

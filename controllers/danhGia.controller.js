@@ -18,9 +18,14 @@ const deleteDanhGia = async (req) => {
     return await danhGiaServices.deleteDanhGia(id, req.authUser);
 }
 
+const getTopTieuChiLoi = async (req) => {
+    return await danhGiaServices.getTopTieuChiLoi(req.query, req.authUser);
+}
+
 module.exports = {
     getListDanhGia,
     getDanhGiaById,
     createDanhGia,
-    deleteDanhGia
+    deleteDanhGia,
+    getTopTieuChiLoi,
 }

@@ -10,6 +10,7 @@ const svRouter = new Router();
 // service (getListDanhGia) dựa vào req.authUser (isAuthAdmin đã gắn sẵn).
 svRouter.get("/get-list-danh-gia", isAuthAdmin, Response(DanhGiaController.getListDanhGia));
 svRouter.get("/get-danh-gia/:id", isAuthAdmin, Response(DanhGiaController.getDanhGiaById));
+svRouter.get("/top-tieu-chi-loi", isAuthAdmin, Response(DanhGiaController.getTopTieuChiLoi));
 
 // Tạo đánh giá: Nhân viên (khoa mình), Trưởng khoa (khoa mình), Phòng QLCL (mọi khoa) — check_permission
 // nhận mảng (OR); Admin có mọi slug nên luôn qua được.
