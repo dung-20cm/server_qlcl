@@ -19,7 +19,9 @@ const updateProfile = async (req, res) => {
 
 const changePassword = async (req, res) => {
   const { data } = req.body
-  return userServices.changePassword(data);
+  // Luôn lấy id từ token đã xác thực (req.authUser), KHÔNG tin id do client gửi lên,
+  // để tài khoản A không thể đổi mật khẩu tài khoản B dù có đoán đúng mật khẩu cũ của B.
+  return userServices.changePassword({ ...data, id: req.authUser.id });
 }
 
 const getListUser = async (req, res) => {
