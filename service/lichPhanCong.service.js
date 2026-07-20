@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 const { ERROR_MESSAGE } = require("../config/error");
 const { LichPhanCong, Khoa, VitriType, User, DotDanhGia } = require("../model");
 
@@ -12,6 +13,33 @@ const getListLichPhanCong = async (data, authUser) => {
     // Trưởng khoa / Nhân viên (không full scope) chỉ xem lịch của khoa mình.
     // Phòng QLCL/Admin (full scope) xem lịch của tất cả khoa.
     if (authUser && !authUser.isFullScope) where.khoa_id = authUser.khoa_id;
+
+    // Lọc theo khoảng ngày (VD: đúng 1 tuần đang xem trên UI) để tránh tải toàn
+    // bộ bảng lich_phan_cong mỗi lần mở trang -- quan trọng khi có nhiều người
+    // dùng cùng lúc. Lịch "dinh_ky" (lặp theo thứ) có ngay_thuc_hien chỉ là MỐC
+    // BẮT ĐẦU áp dụng (không phải 1 ngày cụ thể) nên không lọc theo khoảng ngày
+    // như lịch 1 lần -- chỉ cần lấy các lịch đã "bắt đầu" trước/trong khoảng
+    // đang xem (effective start <= den_ngay); FE tự suy ra lịch rơi đúng ngày
+    // nào trong tuần từ thu_trong_tuan (đủ 7 thứ đều xuất hiện trong 1 tuần).
+    if (data.tu_ngay && data.den_ngay) {
+        where[Op.and] = [
+            {
+                [Op.or]: [
+                    {
+                        loai_lich: { [Op.ne]: 'dinh_ky' },
+                        ngay_thuc_hien: { [Op.between]: [data.tu_ngay, data.den_ngay] },
+                    },
+                    {
+                        loai_lich: 'dinh_ky',
+                        [Op.or]: [
+                            { ngay_thuc_hien: { [Op.lte]: data.den_ngay } },
+                            { ngay_thuc_hien: null, createdAt: { [Op.lte]: data.den_ngay } },
+                        ],
+                    },
+                ],
+            },
+        ];
+    }
 
     const res = await LichPhanCong.findAll({
         where: { ...where },
