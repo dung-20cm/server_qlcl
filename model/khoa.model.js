@@ -15,6 +15,9 @@ class Khoa extends BaseModel {
 
     const Anh5sTuan = require("./anh5sTuan.model");
     this.hasMany(Anh5sTuan, { foreignKey: "khoa_id", as: "anh_5s_tuan", targetKey: "id" });
+
+    const KhacPhuc = require("./khacPhuc.model");
+    this.hasMany(KhacPhuc, { foreignKey: "khoa_id", as: "khac_phuc", targetKey: "id" });
   }
 }
 

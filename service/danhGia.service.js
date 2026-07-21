@@ -203,15 +203,31 @@ const createDanhGia = async (data, authUser) => {
         const han_xu_ly = hanDate.toISOString().slice(0, 10);
         const tuan = `Tuần ${Math.ceil(ngayDanhGia.getDate() / 7)} - ${ngayDanhGia.getMonth() + 1}/${ngayDanhGia.getFullYear()}`;
 
-        const khacPhucRows = chiTietRows
-            .filter(ct => ct.ket_qua === 0)
-            .map(ct => ({
-                danh_gia_chi_tiet_id: ct.id,
-                trang_thai: 'Chưa bắt đầu',
-                han_xu_ly,
-                tuan,
-                active: 1,
-            }));
+        const failedChiTiet = chiTietRows.filter(ct => ct.ket_qua === 0);
+        // khoa_id/vitri_type_id/s_id giờ lưu trực tiếp trên khac_phuc (không chỉ
+        // suy ra qua join) -- cần tra s_id của từng tiêu chí lỗi từ checklist_item.
+        let sIdByChecklistItemId = {};
+        if (failedChiTiet.length) {
+            const items = await ChecklistItem.findAll({
+                where: { id: failedChiTiet.map(ct => ct.checklist_item_id) },
+                attributes: ['id', 's_id'],
+                transaction: t,
+            });
+            sIdByChecklistItemId = Object.fromEntries(items.map(it => [it.id, it.s_id]));
+        }
+        const ngay_phat_hien = header.ngay_danh_gia || ngayDanhGia.toISOString().slice(0, 10);
+
+        const khacPhucRows = failedChiTiet.map(ct => ({
+            danh_gia_chi_tiet_id: ct.id,
+            khoa_id: header.khoa_id,
+            vitri_type_id: header.vitri_type_id,
+            s_id: sIdByChecklistItemId[ct.checklist_item_id] || null,
+            ngay_phat_hien,
+            trang_thai: 'Chưa bắt đầu',
+            han_xu_ly,
+            tuan,
+            active: 1,
+        }));
         if (khacPhucRows.length) {
             await KhacPhuc.bulkCreate(khacPhucRows, { transaction: t });
         }

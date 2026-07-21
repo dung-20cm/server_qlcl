@@ -10,29 +10,32 @@ const getListKhacPhuc = async (data, authUser) => {
     let where = { active: 1 };
     if (data.nguoi_phu_trach_id) where.nguoi_phu_trach_id = data.nguoi_phu_trach_id;
     if (data.trang_thai) where.trang_thai = data.trang_thai;
-
-    // Lọc theo khoa/đợt đánh giá phải đi qua join tới danh_gia_chi_tiet -> danh_gia
-    let danhGiaWhere = {};
-    if (data.khoa_id) danhGiaWhere.khoa_id = data.khoa_id;
+    // khoa_id giờ là cột trực tiếp trên khac_phuc (luôn được set khi tạo, kể cả
+    // tạo tay không gắn danh_gia_chi_tiet) -- lọc thẳng, không cần join.
+    if (data.khoa_id) where.khoa_id = data.khoa_id;
     // Trưởng khoa / Nhân viên (không full scope) chỉ xem khắc phục của khoa mình
-    if (authUser && !authUser.isFullScope) danhGiaWhere.khoa_id = authUser.khoa_id;
+    if (authUser && !authUser.isFullScope) where.khoa_id = authUser.khoa_id;
+
+    // Lọc theo khoảng ngày phát hiện lỗi (VD: đúng 1 tuần đang xem trên UI) --
+    // giống cách lich_phan_cong lọc theo tu_ngay/den_ngay -- tránh tải toàn bộ
+    // bảng khac_phuc mỗi lần mở trang.
+    if (data.tu_ngay && data.den_ngay) {
+        where.ngay_phat_hien = { [Op.between]: [data.tu_ngay, data.den_ngay] };
+    }
 
     const res = await KhacPhuc.findAll({
         where: { ...where },
         ...paging,
         order: [['han_xu_ly', 'asc'], ['id', 'desc']],
         include: [
+            { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
+            { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
             {
-                model: DanhGiaChiTiet, as: 'danh_gia_chi_tiet',
+                // required: false -- hành động tạo tay không có danh_gia_chi_tiet
+                model: DanhGiaChiTiet, as: 'danh_gia_chi_tiet', required: false,
                 include: [
-                    { model: ChecklistItem, as: 'checklist_item', attributes: ['id', 's_id', 's_name', 'sub', 'tc'] },
-                    {
-                        model: DanhGia, as: 'danh_gia', where: danhGiaWhere,
-                        include: [
-                            { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
-                            { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
-                        ]
-                    },
+                    { model: ChecklistItem, as: 'checklist_item', attributes: ['id', 's_id', 's_name', 's_color', 's_lt', 'sub', 'tc'] },
+                    { model: DanhGia, as: 'danh_gia', attributes: ['id', 'ngay_danh_gia'] },
                 ]
             },
             { model: User, as: 'nguoi_phu_trach', attributes: ['id', 'username', 'email'] },
@@ -48,17 +51,13 @@ const getKhacPhucById = async (id) => {
     const data = await KhacPhuc.findOne({
         where: { id },
         include: [
+            { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
+            { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
             {
-                model: DanhGiaChiTiet, as: 'danh_gia_chi_tiet',
+                model: DanhGiaChiTiet, as: 'danh_gia_chi_tiet', required: false,
                 include: [
                     { model: ChecklistItem, as: 'checklist_item' },
-                    {
-                        model: DanhGia, as: 'danh_gia',
-                        include: [
-                            { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
-                            { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
-                        ]
-                    },
+                    { model: DanhGia, as: 'danh_gia', attributes: ['id', 'ngay_danh_gia'] },
                 ]
             },
             { model: User, as: 'nguoi_phu_trach', attributes: ['id', 'username', 'email'] },
@@ -72,7 +71,9 @@ const getKhacPhucById = async (id) => {
     return data
 }
 
-// Lấy khoa_id của bản ghi khắc phục thông qua danh_gia_chi_tiet -> danh_gia (dùng để chặn thao tác chéo khoa)
+// Lấy khoa_id của bản ghi khắc phục thông qua danh_gia_chi_tiet -> danh_gia --
+// chỉ dùng để dự phòng cho dữ liệu cũ chưa kịp backfill cột khoa_id trực tiếp
+// (bình thường khoa_id đã có sẵn trên chính bản ghi khac_phuc).
 const getKhoaIdOfKhacPhuc = async (danh_gia_chi_tiet_id) => {
     if (!danh_gia_chi_tiet_id) return null;
     const cttiet = await DanhGiaChiTiet.findOne({
@@ -90,23 +91,26 @@ const createUpdateKhacPhuc = async (data, authUser) => {
             throw new Error(ERROR_MESSAGE.NOT_FOUND_KHAC_PHUC)
         }
 
-        if (authUser && !authUser.isFullScope) {
-            const khoaId = await getKhoaIdOfKhacPhuc(check.danh_gia_chi_tiet_id);
-            if (Number(khoaId) !== Number(authUser.khoa_id)) {
-                throw new Error(ERROR_MESSAGE.FORBIDDEN);
-            }
+        const khoaId = check.khoa_id ?? await getKhoaIdOfKhacPhuc(check.danh_gia_chi_tiet_id);
+        if (authUser && !authUser.isFullScope && Number(khoaId) !== Number(authUser.khoa_id)) {
+            throw new Error(ERROR_MESSAGE.FORBIDDEN);
+        }
+        // Trưởng khoa/Nhân viên không được đổi khắc phục sang khoa khác của mình
+        if (authUser && !authUser.isFullScope && data.khoa_id != null && Number(data.khoa_id) !== Number(authUser.khoa_id)) {
+            throw new Error(ERROR_MESSAGE.FORBIDDEN);
         }
 
         const update = await check.update({ ...data })
         return update
     } else {
-        if (authUser && !authUser.isFullScope) {
-            const khoaId = await getKhoaIdOfKhacPhuc(data.danh_gia_chi_tiet_id);
-            if (Number(khoaId) !== Number(authUser.khoa_id)) {
-                throw new Error(ERROR_MESSAGE.FORBIDDEN);
-            }
+        if (!data.danh_gia_chi_tiet_id && !data.khoa_id) {
+            throw new Error(ERROR_MESSAGE.REQUIRED_PARAMS);
         }
-        const create = await KhacPhuc.create({ ...data, active: 1 })
+        const khoaId = data.khoa_id ?? await getKhoaIdOfKhacPhuc(data.danh_gia_chi_tiet_id);
+        if (authUser && !authUser.isFullScope && Number(khoaId) !== Number(authUser.khoa_id)) {
+            throw new Error(ERROR_MESSAGE.FORBIDDEN);
+        }
+        const create = await KhacPhuc.create({ ...data, khoa_id: khoaId, active: 1 })
         return create
     }
 }
@@ -119,11 +123,9 @@ const deleteKhacPhuc = async (id, authUser) => {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_KHAC_PHUC)
     }
 
-    if (authUser && !authUser.isFullScope) {
-        const khoaId = await getKhoaIdOfKhacPhuc(check.danh_gia_chi_tiet_id);
-        if (Number(khoaId) !== Number(authUser.khoa_id)) {
-            throw new Error(ERROR_MESSAGE.FORBIDDEN);
-        }
+    const khoaId = check.khoa_id ?? await getKhoaIdOfKhacPhuc(check.danh_gia_chi_tiet_id);
+    if (authUser && !authUser.isFullScope && Number(khoaId) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
     }
 
     const del = await check.update({ active: 0 })

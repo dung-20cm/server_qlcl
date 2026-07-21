@@ -18,6 +18,9 @@ class VitriType extends BaseModel {
 
     const Anh5sTuanVitri = require("./anh5sTuanVitri.model");
     this.hasMany(Anh5sTuanVitri, { foreignKey: "vitri_type_id", as: "anh_5s_tuan_vitri", targetKey: "id" });
+
+    const KhacPhuc = require("./khacPhuc.model");
+    this.hasMany(KhacPhuc, { foreignKey: "vitri_type_id", as: "khac_phuc", targetKey: "id" });
   }
 }
 
