@@ -27,6 +27,7 @@ const getListPhotoGallery = async (data) => {
                 include: [
                     { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
                     { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
+                    { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email'] },
                 ]
             },
             { model: ChecklistItem, as: 'checklist_item', attributes: ['id', 'sub', 'tc'] },
