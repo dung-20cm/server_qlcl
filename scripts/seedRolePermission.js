@@ -20,17 +20,25 @@
  * - truong-khoa: toàn quyền bảng kiểm, lịch đánh giá, tổng hợp, xu hướng, tiến độ khắc phục, báo cáo —
  *   CHỈ của khoa/phòng mình + quản lý tài khoản (CRUD) của khoa/phòng mình
  * - nhan-vien: xem + tạo đánh giá ở bảng kiểm, xem lịch, tổng hợp, xu hướng, tiến độ khắc phục — của khoa/phòng mình
+ * - lanhdao: CHỈ XEM toàn bộ hệ thống (giống Admin ở phạm vi xem — mọi khoa/phòng, mọi trang) nhưng
+ *   KHÔNG có bất kỳ quyền thêm/sửa/xoá nào (không tạo tài khoản, không cấu hình, không chấm đánh giá,
+ *   không quản lý ảnh 5S...). Chỉ giữ đúng 1 quyền XEM_TOAN_QUYEN_BAO_CAO_LICH (permission "xem toàn
+ *   viện" vốn Admin cũng giữ, đã có sẵn trong FULL_SCOPE_SLUGS) + DOI_MAT_KHAU (tự đổi mật khẩu mình).
+ *   Các route GET (xem danh sách) trước đây gate cùng 1 slug với route ghi (Ảnh 5S/Zalo 5S, danh sách
+ *   tài khoản, danh sách role) đã được nới thêm XEM_TOAN_QUYEN_BAO_CAO_LICH riêng cho việc XEM — xem
+ *   routes/anh5sTuan.routes.js, routes/photoGallery.routes.js, routes/user.routes.js, routes/role.routes.js.
  */
 require("dotenv").config();
 const { Role, Permission, RolePermission } = require("../model");
 const ACTION = require("../middleware/actionDefault");
 
-// 4 role theo map.jpg
+// 5 role (4 role gốc theo map.jpg + lanhdao chỉ xem, không thao tác)
 const ROLES = [
   { slug: "admin", name: "Admin" },
   { slug: "phong-qlcl", name: "Phòng QLCL" },
   { slug: "truong-khoa", name: "Trưởng khoa" },
   { slug: "nhan-vien", name: "Nhân viên" },
+  { slug: "lanhdao", name: "Lãnh đạo" },
 ];
 
 // Toàn bộ permission hiện có trong hệ thống
@@ -84,6 +92,14 @@ const NHAN_VIEN_PERMS = [
   ACTION.DOI_MAT_KHAU,
 ];
 
+// Lãnh đạo: CHỈ xem (mọi khoa/phòng, mọi trang) -- không giữ bất kỳ slug thêm/
+// sửa/xoá nào. XEM_TOAN_QUYEN_BAO_CAO_LICH nằm sẵn trong FULL_SCOPE_SLUGS nên
+// đủ để mọi service tính isFullScope=true (thấy dữ liệu tất cả khoa như Admin).
+const LANHDAO_PERMS = [
+  ACTION.XEM_TOAN_QUYEN_BAO_CAO_LICH,
+  ACTION.DOI_MAT_KHAU,
+];
+
 // Gán permission cho từng role
 const ROLE_PERMISSION_MAP = {
   "admin": [
@@ -99,6 +115,7 @@ const ROLE_PERMISSION_MAP = {
   "phong-qlcl": QLCL_PERMS,
   "truong-khoa": TRUONG_KHOA_PERMS,
   "nhan-vien": NHAN_VIEN_PERMS,
+  "lanhdao": LANHDAO_PERMS,
 };
 
 async function run() {

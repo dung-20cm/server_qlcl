@@ -369,11 +369,12 @@ const getListUser = asyncHandler(async (req, authUser) => {
   };
 });
 
-// Trưởng khoa (không full scope) không được tự gán role admin/phong-qlcl cho ai
+// Trưởng khoa (không full scope) không được tự gán role admin/phong-qlcl/lanhdao cho ai
+// -- lanhdao (chỉ xem toàn viện) chỉ Admin mới được cấp, tương tự admin/phong-qlcl.
 const assertRoleAllowedForScopedManager = async (roleId, authUser) => {
   if (!authUser || authUser.isFullScope || !roleId) return;
   const role = await Role.findOne({ where: { id: roleId, del: 0 } });
-  if (role && ["admin", "phong-qlcl"].includes(role.slug)) {
+  if (role && ["admin", "phong-qlcl", "lanhdao"].includes(role.slug)) {
     throw new Error(ERROR_MESSAGE.FORBIDDEN);
   }
 };

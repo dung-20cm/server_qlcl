@@ -2,7 +2,7 @@ const { UserController } = require("../controllers");
 const { Router } = require("express");
 const { Response } = require("../config/handle_response");
 const { check_permission, isAuthAdmin } = require("../middleware/auth");
-const { TAO_TAI_KHOAN, TAO_TAI_KHOAN_NHAN_VIEN } = require("../middleware/actionDefault");
+const { TAO_TAI_KHOAN, TAO_TAI_KHOAN_NHAN_VIEN, XEM_TOAN_QUYEN_BAO_CAO_LICH } = require("../middleware/actionDefault");
 
 const svRouter = new Router();
 
@@ -15,7 +15,9 @@ svRouter.post("/change_password", isAuthAdmin, Response(UserController.changePas
 
 // Quản lý tài khoản: Admin (tất cả khoa - TAO_TAI_KHOAN) hoặc Trưởng khoa (chỉ
 // khoa/phòng mình - TAO_TAI_KHOAN_NHAN_VIEN) - scoping thực hiện ở service layer.
-svRouter.get("/api/user/get-list-user", check_permission([TAO_TAI_KHOAN, TAO_TAI_KHOAN_NHAN_VIEN]), Response(UserController.getListUser));
+// Riêng route XEM DANH SÁCH nhận thêm XEM_TOAN_QUYEN_BAO_CAO_LICH để Lãnh đạo
+// xem được toàn bộ tài khoản mà không có quyền tạo/sửa/xoá (2 route dưới không đổi).
+svRouter.get("/api/user/get-list-user", check_permission([TAO_TAI_KHOAN, TAO_TAI_KHOAN_NHAN_VIEN, XEM_TOAN_QUYEN_BAO_CAO_LICH]), Response(UserController.getListUser));
 svRouter.post("/api/user/update_user", check_permission([TAO_TAI_KHOAN, TAO_TAI_KHOAN_NHAN_VIEN]), Response(UserController.updateUser));
 svRouter.post("/api/user/delete_user", check_permission([TAO_TAI_KHOAN, TAO_TAI_KHOAN_NHAN_VIEN]), Response(UserController.deleteUser));
 
