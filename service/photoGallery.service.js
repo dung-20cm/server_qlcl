@@ -1,6 +1,23 @@
 const { Op } = require("sequelize");
 const { ERROR_MESSAGE } = require("../config/error");
 const { PhotoGallery, DanhGia, ChecklistItem, Khoa, VitriType, User } = require("../model");
+const { QUAN_LY_ANH_5S_TAT_CA_KHOA } = require("../middleware/actionDefault");
+
+// Ảnh gắn 1 lượt đánh giá (danh_gia_id có giá trị) -- chỉ CHÍNH tài khoản đã
+// tạo lượt đánh giá đó mới được thêm/xoá ảnh (khớp đúng quyền sửa/xoá đánh giá
+// ở danhGia.service.js, không xét vai trò/quyền). Ảnh gửi độc lập (Nhóm Zalo
+// 5S, danh_gia_id NULL) thì vẫn chỉ Phòng QLCL/Admin như thiết kế cũ.
+async function assertOwnerOfPhoto(danhGiaId, authUser) {
+    const danhGia = await DanhGia.findOne({ where: { id: danhGiaId } });
+    if (!danhGia || !authUser || Number(danhGia.nguoi_danh_gia_id) !== Number(authUser.id)) {
+        throw new Error(ERROR_MESSAGE.ANH_MINH_CHUNG_NOT_OWNER);
+    }
+}
+function assertCanManageAnh5S(authUser) {
+    if (!authUser || !(authUser.permissions || []).includes(QUAN_LY_ANH_5S_TAT_CA_KHOA)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
+    }
+}
 
 const getListPhotoGallery = async (data) => {
     let where = { active: 1 };
@@ -47,9 +64,14 @@ const getListPhotoGallery = async (data) => {
 //  - Ảnh minh chứng gắn 1 lượt đánh giá: truyền danh_gia_id (+ checklist_item_id nếu cần).
 //  - Ảnh gửi độc lập (không qua Bảng kiểm): truyền khoa_id (bắt buộc), kèm
 //    vitri_type_id/ngay_chup/nguoi_gui_id/ket_qua/ghi_chu tuỳ chọn.
-const createPhotoGallery = async (data) => {
+const createPhotoGallery = async (data, authUser) => {
     if (!data.danh_gia_id && !data.khoa_id) {
         throw new Error(ERROR_MESSAGE.REQUIRED_PARAMS);
+    }
+    if (data.danh_gia_id) {
+        await assertOwnerOfPhoto(data.danh_gia_id, authUser);
+    } else {
+        assertCanManageAnh5S(authUser);
     }
     const create = await PhotoGallery.create({ ...data, active: 1 })
     return create
@@ -70,11 +92,12 @@ const updatePhotoGallery = async (data) => {
 }
 
 // Thêm nhiều ảnh cùng lúc cho 1 lần đánh giá
-const createManyPhotoGallery = async (data) => {
+const createManyPhotoGallery = async (data, authUser) => {
     const { danh_gia_id, photos } = data;
     if (!danh_gia_id || !Array.isArray(photos) || photos.length === 0) {
         throw new Error(ERROR_MESSAGE.REQUIRED_PARAMS);
     }
+    await assertOwnerOfPhoto(danh_gia_id, authUser);
 
     const rows = photos.map(p => ({
         danh_gia_id,
@@ -88,11 +111,17 @@ const createManyPhotoGallery = async (data) => {
     return await PhotoGallery.bulkCreate(rows);
 }
 
-const deletePhotoGallery = async (id) => {
+const deletePhotoGallery = async (id, authUser) => {
     const check = await PhotoGallery.findOne({ where: { id } })
 
     if (!check) {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_PHOTO_GALLERY)
+    }
+
+    if (check.danh_gia_id) {
+        await assertOwnerOfPhoto(check.danh_gia_id, authUser);
+    } else {
+        assertCanManageAnh5S(authUser);
     }
 
     const del = await check.update({ active: 0 })

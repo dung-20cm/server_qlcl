@@ -4,6 +4,7 @@ const { Response } = require("../config/handle_response");
 const { check_permission, isAuthAdmin } = require("../middleware/auth");
 const { LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH } = require("../middleware/actionDefault");
 
+
 const svRouter = new Router();
 
 // Xem: cả 4 role đã đăng nhập đều xem được — dữ liệu được lọc theo khoa ở
@@ -16,8 +17,12 @@ svRouter.get("/top-tieu-chi-loi", isAuthAdmin, Response(DanhGiaController.getTop
 // nhận mảng (OR); Admin có mọi slug nên luôn qua được.
 svRouter.post("/create-danh-gia", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH]), Response(DanhGiaController.createDanhGia));
 
-// Xoá đánh giá: chỉ role "toàn quyền bảng kiểm" (Trưởng khoa - khoa mình, Admin - mọi khoa).
-// Phòng QLCL và Nhân viên KHÔNG được xoá.
-svRouter.post("/delete-danh-gia/:id", check_permission(QUAN_LY_BANG_KIEM_KHOA_MINH), Response(DanhGiaController.deleteDanhGia));
+// Sửa/Xoá đánh giá: KHÔNG gate theo vai trò/quyền -- chỉ cần đã đăng nhập.
+// Service (updateDanhGia/deleteDanhGia) tự chặn: CHỈ chính tài khoản đã tạo
+// phiếu đánh giá (nguoi_danh_gia_id) mới được sửa/xoá bản ghi đó -- kể cả
+// Admin/Trưởng khoa cũng không được sửa/xoá đánh giá do người khác tạo.
+// Service còn tự chặn thêm: chỉ sửa/xoá được trong ĐÚNG ngày đánh giá.
+svRouter.post("/update-danh-gia/:id", isAuthAdmin, Response(DanhGiaController.updateDanhGia));
+svRouter.post("/delete-danh-gia/:id", isAuthAdmin, Response(DanhGiaController.deleteDanhGia));
 
 module.exports = svRouter;

@@ -47,7 +47,7 @@ const getListLichPhanCong = async (data, authUser) => {
         include: [
             { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
             { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
-            { model: User, as: 'nguoi_thuc_hien', attributes: ['id', 'username', 'email'] },
+            { model: User, as: 'nguoi_thuc_hien', attributes: ['id', 'username', 'email', 'khoa_id'] },
             { model: DotDanhGia, as: 'dot', attributes: ['id', 'ten_dot', 'trang_thai'] },
         ]
     })
@@ -63,7 +63,7 @@ const getLichPhanCongById = async (id) => {
         include: [
             { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
             { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
-            { model: User, as: 'nguoi_thuc_hien', attributes: ['id', 'username', 'email'] },
+            { model: User, as: 'nguoi_thuc_hien', attributes: ['id', 'username', 'email', 'khoa_id'] },
             { model: DotDanhGia, as: 'dot', attributes: ['id', 'ten_dot', 'trang_thai'] },
         ]
     })

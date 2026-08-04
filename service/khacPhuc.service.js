@@ -26,7 +26,9 @@ const getListKhacPhuc = async (data, authUser) => {
     const res = await KhacPhuc.findAll({
         where: { ...where },
         ...paging,
-        order: [['han_xu_ly', 'asc'], ['id', 'desc']],
+        // Bản ghi vừa tạo hoặc vừa sửa (cập nhật hành động khắc phục, trạng thái...)
+        // luôn nổi lên đầu danh sách -- updatedAt tự đổi mỗi lần sửa.
+        order: [['updatedAt', 'desc'], ['id', 'desc']],
         include: [
             { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
             { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },

@@ -3,7 +3,7 @@ const { ERROR_MESSAGE } = require("../config/error");
 const { Paging } = require("../config/paging");
 const { sequelize } = require("../config/connect");
 const {
-    DanhGia, DanhGiaChiTiet, Khoa, VitriType, VitriChiTiet, User, ChecklistItem, KhacPhuc
+    DanhGia, DanhGiaChiTiet, Khoa, VitriType, VitriChiTiet, User, ChecklistItem, KhacPhuc, PhotoGallery
 } = require("../model");
 
 const getListDanhGia = async (data, authUser) => {
@@ -30,7 +30,7 @@ const getListDanhGia = async (data, authUser) => {
             { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
             { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
             { model: VitriChiTiet, as: 'vitri_chi_tiet', attributes: ['id', 'ma_vitri'] },
-            { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email'] },
+            { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email', 'khoa_id'] },
         ]
     })
 
@@ -109,7 +109,7 @@ const getDanhGiaById = async (id) => {
             { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
             { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
             { model: VitriChiTiet, as: 'vitri_chi_tiet', attributes: ['id', 'ma_vitri'] },
-            { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email'] },
+            { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email', 'khoa_id'] },
         ]
     })
 
@@ -236,7 +236,120 @@ const createDanhGia = async (data, authUser) => {
     });
 }
 
-// Xoá mềm: chỉ ẩn (active=0), giữ dữ liệu lịch sử (KP, ảnh đã liên kết đánh giá này)
+// Sửa 1 phiếu đánh giá đã có: cập nhật header + thay toàn bộ chi tiết tiêu chí.
+// CHỈ cho sửa trong ĐÚNG ngày đánh giá (so với ngày hệ thống hiện tại) -- yêu
+// cầu "chỉ được sửa/xoá trong ngày hiện tại, sang ngày hôm sau khoá lại".
+// payload: { id, khoa_id, vitri_type_id, vitri_chi_tiet_id, nguoi_danh_gia_id,
+//   ngay_danh_gia, dot_danh_gia, dot_danh_gia_id, chi_tiet: [{checklist_item_id, ket_qua, ghi_chu}] }
+const updateDanhGia = async (data, authUser) => {
+    const { id, chi_tiet, ...header } = data;
+
+    if (!id || !Array.isArray(chi_tiet) || chi_tiet.length === 0) {
+        throw new Error(ERROR_MESSAGE.REQUIRED_PARAMS);
+    }
+
+    const check = await DanhGia.findOne({ where: { id, active: 1 } });
+    if (!check) {
+        throw new Error(ERROR_MESSAGE.NOT_FOUND_DANH_GIA);
+    }
+
+    // Chỉ CHÍNH tài khoản đã tạo phiếu đánh giá này (nguoi_danh_gia_id) mới được
+    // sửa -- không xét vai trò/quyền, kể cả Admin hay Trưởng khoa cũng KHÔNG được
+    // sửa đánh giá do tài khoản khác tạo (dù cùng khoa/phòng).
+    if (!authUser || Number(check.nguoi_danh_gia_id) !== Number(authUser.id)) {
+        throw new Error(ERROR_MESSAGE.DANH_GIA_NOT_OWNER);
+    }
+
+    const todayStr = new Date().toISOString().slice(0, 10);
+    if (check.ngay_danh_gia !== todayStr) {
+        throw new Error(ERROR_MESSAGE.DANH_GIA_QUA_HAN_SUA);
+    }
+
+    const so_tieu_chi_tong = chi_tiet.length;
+    const so_tieu_chi_dat = chi_tiet.filter(c => c.ket_qua === 1).length;
+    const pct = so_tieu_chi_tong ? Math.round((so_tieu_chi_dat / so_tieu_chi_tong) * 100) : 0;
+    const xep_loai = pct >= 85 ? '✓ ĐẠT TỐT' : pct >= 70 ? '◎ ĐẠT' : '✗ CHƯA ĐẠT';
+
+    return await sequelize.transaction(async (t) => {
+        await check.update({ ...header, so_tieu_chi_tong, so_tieu_chi_dat, pct, xep_loai }, { transaction: t });
+
+        // Cập nhật TẠI CHỖ từng dòng chi tiết theo checklist_item_id (thay vì xoá hết
+        // tạo lại) -- giữ nguyên id của DanhGiaChiTiet nên các bản ghi khac_phuc đã
+        // gắn (và có thể đã được Trưởng khoa điền tay hành động khắc phục) không bị
+        // mất, chỉ đồng bộ lại đúng những tiêu chí VỪA đổi trạng thái đạt/không đạt.
+        const oldChiTiet = await DanhGiaChiTiet.findAll({ where: { danh_gia_id: id }, transaction: t });
+        const oldByItemId = new Map(oldChiTiet.map(c => [c.checklist_item_id, c]));
+        const seenItemIds = new Set();
+        const newlyFailed = []; // [{ danh_gia_chi_tiet_id, checklist_item_id }]
+
+        for (const c of chi_tiet) {
+            seenItemIds.add(c.checklist_item_id);
+            const old = oldByItemId.get(c.checklist_item_id);
+            if (old) {
+                const wasFailed = old.ket_qua === 0;
+                await old.update({ ket_qua: c.ket_qua, ghi_chu: c.ghi_chu || null }, { transaction: t });
+                if (wasFailed && c.ket_qua !== 0) {
+                    // Hết lỗi -- gỡ hành động khắc phục tự tạo trước đó cho tiêu chí này.
+                    await KhacPhuc.destroy({ where: { danh_gia_chi_tiet_id: old.id }, transaction: t });
+                } else if (!wasFailed && c.ket_qua === 0) {
+                    newlyFailed.push({ danh_gia_chi_tiet_id: old.id, checklist_item_id: c.checklist_item_id });
+                }
+                // Vẫn lỗi cả trước lẫn sau -- giữ nguyên khac_phuc đang có, không đụng vào.
+            } else {
+                // Hiếm gặp: bộ tiêu chí đổi giữa lúc tạo và lúc sửa.
+                const created = await DanhGiaChiTiet.create({
+                    danh_gia_id: id,
+                    checklist_item_id: c.checklist_item_id,
+                    ket_qua: c.ket_qua,
+                    ghi_chu: c.ghi_chu || null,
+                }, { transaction: t });
+                if (c.ket_qua === 0) newlyFailed.push({ danh_gia_chi_tiet_id: created.id, checklist_item_id: c.checklist_item_id });
+            }
+        }
+        // Tiêu chí không còn trong danh sách mới -- xoá cả chi tiết lẫn khắc phục liên quan.
+        for (const [itemId, old] of oldByItemId) {
+            if (!seenItemIds.has(itemId)) {
+                await KhacPhuc.destroy({ where: { danh_gia_chi_tiet_id: old.id }, transaction: t });
+                await old.destroy({ transaction: t });
+            }
+        }
+
+        if (newlyFailed.length) {
+            const ngayDanhGia = header.ngay_danh_gia ? new Date(header.ngay_danh_gia) : new Date(check.ngay_danh_gia);
+            const hanDate = new Date(ngayDanhGia);
+            hanDate.setDate(hanDate.getDate() + 7);
+            const han_xu_ly = hanDate.toISOString().slice(0, 10);
+            const tuan = `Tuần ${Math.ceil(ngayDanhGia.getDate() / 7)} - ${ngayDanhGia.getMonth() + 1}/${ngayDanhGia.getFullYear()}`;
+            const ngay_phat_hien = header.ngay_danh_gia || check.ngay_danh_gia;
+            const khoa_id = header.khoa_id ?? check.khoa_id;
+            const vitri_type_id = header.vitri_type_id ?? check.vitri_type_id;
+
+            const items = await ChecklistItem.findAll({
+                where: { id: newlyFailed.map(x => x.checklist_item_id) },
+                attributes: ['id', 's_id'],
+                transaction: t,
+            });
+            const sIdByChecklistItemId = Object.fromEntries(items.map(it => [it.id, it.s_id]));
+
+            await KhacPhuc.bulkCreate(newlyFailed.map(x => ({
+                danh_gia_chi_tiet_id: x.danh_gia_chi_tiet_id,
+                khoa_id,
+                vitri_type_id,
+                s_id: sIdByChecklistItemId[x.checklist_item_id] || null,
+                ngay_phat_hien,
+                trang_thai: 'Chưa bắt đầu',
+                han_xu_ly,
+                tuan,
+                active: 1,
+            })), { transaction: t });
+        }
+
+        return check;
+    });
+}
+
+// Xoá mềm: chỉ ẩn (active=0), giữ dữ liệu lịch sử (KP, ảnh đã liên kết đánh giá này).
+// CHỈ cho xoá trong ĐÚNG ngày đánh giá -- cùng ràng buộc với updateDanhGia.
 const deleteDanhGia = async (id, authUser) => {
     const check = await DanhGia.findOne({ where: { id } })
 
@@ -244,12 +357,28 @@ const deleteDanhGia = async (id, authUser) => {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_DANH_GIA)
     }
 
-    // Trưởng khoa (không full scope) chỉ được xoá đánh giá của khoa mình.
-    if (authUser && !authUser.isFullScope && Number(check.khoa_id) !== Number(authUser.khoa_id)) {
-        throw new Error(ERROR_MESSAGE.FORBIDDEN);
+    // Chỉ CHÍNH tài khoản đã tạo phiếu đánh giá này (nguoi_danh_gia_id) mới được
+    // xoá -- không xét vai trò/quyền, kể cả Admin hay Trưởng khoa cũng KHÔNG được
+    // xoá đánh giá do tài khoản khác tạo (dù cùng khoa/phòng).
+    if (!authUser || Number(check.nguoi_danh_gia_id) !== Number(authUser.id)) {
+        throw new Error(ERROR_MESSAGE.DANH_GIA_NOT_OWNER);
+    }
+
+    const todayStr = new Date().toISOString().slice(0, 10);
+    if (check.ngay_danh_gia !== todayStr) {
+        throw new Error(ERROR_MESSAGE.DANH_GIA_QUA_HAN_SUA);
     }
 
     const del = await check.update({ active: 0 })
+
+    // Xoá đánh giá thì ảnh minh chứng đính kèm cũng không còn ý nghĩa gì nữa
+    // -- ẩn theo (soft-delete) để trang Ảnh 5S không còn hiển thị ảnh của
+    // đánh giá đã xoá.
+    await PhotoGallery.update(
+        { active: 0 },
+        { where: { danh_gia_id: id, active: 1 } },
+    )
+
     return del
 }
 
@@ -315,6 +444,7 @@ module.exports = {
     getListDanhGia,
     getDanhGiaById,
     createDanhGia,
+    updateDanhGia,
     deleteDanhGia,
     getTopTieuChiLoi,
 }

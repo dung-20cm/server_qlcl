@@ -13,6 +13,10 @@ const createDanhGia = async (req) => {
     return await danhGiaServices.createDanhGia(req.body, req.authUser);
 }
 
+const updateDanhGia = async (req) => {
+    return await danhGiaServices.updateDanhGia({ id: req.params.id, ...req.body }, req.authUser);
+}
+
 const deleteDanhGia = async (req) => {
     const id = req.params.id;
     return await danhGiaServices.deleteDanhGia(id, req.authUser);
@@ -26,6 +30,7 @@ module.exports = {
     getListDanhGia,
     getDanhGiaById,
     createDanhGia,
+    updateDanhGia,
     deleteDanhGia,
     getTopTieuChiLoi,
 }

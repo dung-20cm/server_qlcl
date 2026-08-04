@@ -36,6 +36,9 @@ const ERROR_MESSAGE = {
   VOUCHER_EXIST: 'Mã voucher đã tồn tại. Vui lòng nhập mã khác!',
   INVALID_CREATE_CATEGORY: 'Danh mục đã tồn tại',
   FORBIDDEN: 'Bạn không có quyền thao tác với dữ liệu của khoa/phòng khác',
+  DANH_GIA_QUA_HAN_SUA: 'Chỉ được sửa/xoá phiếu đánh giá trong đúng ngày đánh giá — phiếu này đã qua ngày, không thể chỉnh sửa nữa',
+  DANH_GIA_NOT_OWNER: 'Chỉ tài khoản đã tạo phiếu đánh giá này mới được sửa/xoá — bạn không phải là người đã tạo đánh giá này',
+  ANH_MINH_CHUNG_NOT_OWNER: 'Chỉ tài khoản đã tạo phiếu đánh giá này mới được thêm/xoá ảnh minh chứng đính kèm',
 };
 
 module.exports = {

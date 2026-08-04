@@ -5,7 +5,7 @@ const getListPhotoGallery = async (req) => {
 }
 
 const createPhotoGallery = async (req) => {
-    return await photoGalleryServices.createPhotoGallery(req.body);
+    return await photoGalleryServices.createPhotoGallery(req.body, req.authUser);
 }
 
 const updatePhotoGallery = async (req) => {
@@ -13,12 +13,12 @@ const updatePhotoGallery = async (req) => {
 }
 
 const createManyPhotoGallery = async (req) => {
-    return await photoGalleryServices.createManyPhotoGallery(req.body);
+    return await photoGalleryServices.createManyPhotoGallery(req.body, req.authUser);
 }
 
 const deletePhotoGallery = async (req) => {
     const id = req.params.id;
-    return await photoGalleryServices.deletePhotoGallery(id);
+    return await photoGalleryServices.deletePhotoGallery(id, req.authUser);
 }
 
 module.exports = {
