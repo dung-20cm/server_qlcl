@@ -6,7 +6,7 @@ const getListLichPhanCong = async (req) => {
 
 const getLichPhanCongById = async (req) => {
     const id = req.params.id;
-    return await lichPhanCongServices.getLichPhanCongById(id);
+    return await lichPhanCongServices.getLichPhanCongById(id, req.authUser);
 }
 
 const createUpdateLichPhanCong = async (req) => {

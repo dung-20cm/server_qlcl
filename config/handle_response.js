@@ -40,4 +40,9 @@ const ResponseExportExcel = (handel) => {
   };
 }
 
-module.exports = { Response, ResponseExportExcel };
+// Alias rõ nghĩa hơn cho route phục vụ file thô (ảnh, export...) -- controller
+// tự res.send/res.redirect/pipe stream, không bọc qua envelope JSON như Response().
+// Giống hệt ResponseExportExcel, chỉ đổi tên cho dễ đọc ở nơi gọi.
+const ResponseFile = ResponseExportExcel;
+
+module.exports = { Response, ResponseExportExcel, ResponseFile };

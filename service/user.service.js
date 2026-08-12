@@ -112,19 +112,18 @@ const login = asyncHandler(async (req, res) => {
     //jwt gồm :<base64-encoded header>.<base64-encoded payload>.<base64-encoded signature>
 
     //jwt.sign(payload, secretOrPrivateKey, [options, callback])
-    const accessToken = jwt.sign(
-      {
-        //truyền vào payload
-        userid: user.id,
-        // user: {
-        //   username: user.username,
-        //   email: user.email,
-        //   id: user.id,
-        // },
-      },
-      _CONF.SECRET,
-      { expiresIn: _CONF.tokenLife }, //token sẽ hết hạn
-    );
+    // Dùng generateToken() (không truyền expiresIn) để token luôn hết hạn đúng
+    // 23:59:59 CÙNG NGÀY đăng nhập -- sang ngày mới bắt buộc đăng nhập lại, dù
+    // đăng nhập lúc mấy giờ trong ngày (xem secondsUntilEndOfDay trong middleware/auth.js).
+    const accessToken = await generateToken({
+      //truyền vào payload
+      userid: user.id,
+      // user: {
+      //   username: user.username,
+      //   email: user.email,
+      //   id: user.id,
+      // },
+    });
     const refreshToken = jwt.sign(
       {
         //truyền vào payload
@@ -280,8 +279,12 @@ const changePassword = asyncHandler(async (data) => {
     }
   }
 
+  // BUG đã fix: payload phải dùng key `userid` (khớp với dataToken.userid mà
+  // check_permission/isAuthAdmin đọc ra) -- trước đây dùng `id` khiến token mới
+  // cấp sau khi đổi mật khẩu bị middleware coi là "không tìm thấy thông tin
+  // người dùng" (code 402), FE tự động logout ngay sau khi đổi mật khẩu thành công.
   const token = await generateToken({
-    id: existAccount.id,
+    userid: existAccount.id,
     check: true,
     password: existAccount.password.substring(42),
   });

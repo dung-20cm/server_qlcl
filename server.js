@@ -11,14 +11,21 @@ const multer = require("multer");
 const { Readable } = require("stream");
 const { ERROR_MESSAGE } = require("./config/error");
 const { isAuthAdmin } = require("./middleware/auth");
+const { saveResizedImage } = require("./service/localImageStorage.service");
 
-const cloudinary = require("cloudinary").v2;
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// ============================================================================
+// CLOUDINARY (ĐANG TẮT — 2026-08-12) — đã chuyển sang lưu ảnh cục bộ trên đĩa
+// server (xem service/localImageStorage.service.js + route "POST
+// /api/upload/uploadImage" bên dưới). GIỮ NGUYÊN đoạn dưới để dễ bật lại sau
+// này, xem CLOUDINARY_README.txt để biết đúng các bước cần làm.
+// ============================================================================
+// const cloudinary = require("cloudinary").v2;
+//
+// cloudinary.config({
+//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
 
 const app = express();
 
@@ -182,32 +189,63 @@ app.post("/api/upload/uploadImage", isAuthAdmin, async (req, res) => {
 
       const file = req.files[0]; // Lấy tệp đầu tiên (bạn có thể lặp qua tất cả các tệp nếu cần)
 
-      // File chỉ nằm trong RAM (file.buffer, multer.memoryStorage) -- đẩy thẳng lên Cloudinary
-      // qua upload_stream, KHÔNG ghi ra static/uploads/ (đỡ tốn dung lượng đĩa server).
-      try {
-        const result = await new Promise((resolve, reject) => {
-          const uploadStream = cloudinary.uploader.upload_stream(
-            { folder: "uploads" },
-            (uploadError, uploadResult) => {
-              if (uploadError) return reject(uploadError);
-              resolve(uploadResult);
-            },
-          );
-          Readable.from(file.buffer).pipe(uploadStream);
-        });
+      // ========================================================================
+      // CLOUDINARY (ĐANG TẮT) -- File chỉ nằm trong RAM (file.buffer,
+      // multer.memoryStorage) rồi đẩy thẳng lên Cloudinary qua upload_stream.
+      // Giữ nguyên để dễ bật lại, xem CLOUDINARY_README.txt.
+      // ========================================================================
+      // try {
+      //   const result = await new Promise((resolve, reject) => {
+      //     const uploadStream = cloudinary.uploader.upload_stream(
+      //       { folder: "uploads" },
+      //       (uploadError, uploadResult) => {
+      //         if (uploadError) return reject(uploadError);
+      //         resolve(uploadResult);
+      //       },
+      //     );
+      //     Readable.from(file.buffer).pipe(uploadStream);
+      //   });
+      //   return res.status(200).send({
+      //     statusCode: 200,
+      //     message: "Tải ảnh lên thành công!",
+      //     data: { url: result.secure_url, secure_url: result.secure_url },
+      //   });
+      // } catch (uploadError) {
+      //   return res.status(500).send({
+      //     code: 500,
+      //     signal: 0,
+      //     message: "Tải ảnh lên Cloudinary thất bại!",
+      //     error: uploadError.message,
+      //   });
+      // }
 
-        // FE (CMS_Dashboard_QLCL/src/features/qlcl/api.ts -> uploadImage()) đọc data.url hoặc
-        // data.secure_url -- trả cả 2 khớp chuẩn envelope {statusCode, message, data} toàn hệ thống.
+      // Lưu ảnh CỤC BỘ trên server: resize cạnh dài <=1600px + nén JPEG 78%
+      // (service/localImageStorage.service.js) rồi ghi ra UPLOAD_DIR (.env).
+      // File chỉ nằm trong RAM (file.buffer) tới bước này, không ghi bản GỐC
+      // chưa nén ra đĩa -- chỉ ghi đúng 1 bản đã xử lý.
+      try {
+        const { relativeKey, mimeType } = await saveResizedImage(
+          file.buffer,
+          file.originalname,
+          file.mimetype,
+        );
+
+        // FE (CMS_Dashboard_QLCL/src/features/qlcl/api.ts -> uploadImage()) đọc
+        // data.url hoặc data.secure_url -- GIỮ ĐÚNG tên field cũ để không phải
+        // sửa chỗ nào khác, chỉ đổi Ý NGHĨA giá trị: không còn là URL công khai
+        // Cloudinary nữa mà là 1 KEY tương đối (VD "2026/08/12/<uuid>.jpg"),
+        // dùng để tra file vật lý khi phục vụ qua GET /api/photo-gallery/image/:id
+        // (route CÓ xác thực + kiểm tra khoa, KHÔNG phải link công khai).
         return res.status(200).send({
           statusCode: 200,
           message: "Tải ảnh lên thành công!",
-          data: { url: result.secure_url, secure_url: result.secure_url },
+          data: { url: relativeKey, secure_url: relativeKey, mimeType },
         });
       } catch (uploadError) {
         return res.status(500).send({
           code: 500,
           signal: 0,
-          message: "Tải ảnh lên Cloudinary thất bại!",
+          message: "Lưu ảnh lên server thất bại!",
           error: uploadError.message,
         });
       }

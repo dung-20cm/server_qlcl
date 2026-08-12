@@ -56,7 +56,19 @@ const checkPassword = async (password, hashPass) => {
   return bcrypt.compare(password, hashPass);
 }
 
-const generateToken = async (data, secretKey = _CONF.SECRET, expiresIn = '30d') => {
+// Số giây còn lại tới hết ngày hôm nay (23:59:59, theo giờ server) -- dùng làm
+// expiresIn mặc định cho MỌI token cấp phát, để phiên đăng nhập luôn tự hết
+// hạn đúng lúc sang ngày mới bất kể đăng nhập lúc mấy giờ trong ngày (đăng
+// nhập 8h sáng hay 11h đêm thì token cũng chỉ sống tới 23:59:59 CÙNG ngày đó).
+// Default param của JS luôn được eval LẠI mỗi lần hàm chạy (nếu call site bỏ
+// trống tham số) nên giá trị này không bị "đóng băng" từ lúc server khởi động.
+const secondsUntilEndOfDay = () => {
+  const now = new Date();
+  const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+  return Math.max(60, Math.round((endOfDay.getTime() - now.getTime()) / 1000));
+}
+
+const generateToken = async (data, secretKey = _CONF.SECRET, expiresIn = secondsUntilEndOfDay()) => {
   return jwt.sign(data, secretKey, { expiresIn });
 }
 
@@ -242,6 +254,7 @@ module.exports = {
   hashPassWord,
   checkPassword,
   generateToken,
+  secondsUntilEndOfDay,
   check_permission,
   isAuthAdmin,
   getPermissionSlugsByRole,

@@ -1,6 +1,6 @@
 const { PhotoGalleryController } = require("../controllers");
 const { Router } = require("express");
-const { Response } = require("../config/handle_response");
+const { Response, ResponseFile } = require("../config/handle_response");
 const { check_permission } = require("../middleware/auth");
 const { LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA, XEM_TOAN_QUYEN_BAO_CAO_LICH } = require("../middleware/actionDefault");
 
@@ -20,6 +20,12 @@ const svRouter = new Router();
 // "Sửa" đánh giá. Cộng thêm QUAN_LY_ANH_5S_TAT_CA_KHOA/XEM_TOAN_QUYEN_BAO_CAO_LICH
 // như cũ cho luồng Anh5S.tsx (ảnh gửi độc lập, QLCL/Admin/Lãnh đạo).
 svRouter.get("/get-list-photo-gallery", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA, XEM_TOAN_QUYEN_BAO_CAO_LICH]), Response(PhotoGalleryController.getListPhotoGallery));
+// Phục vụ file ảnh vật lý (lưu cục bộ trên server) qua route CÓ xác thực +
+// kiểm tra khoa giống hệt getListPhotoGallery -- KHÔNG dùng express.static
+// (sẽ lộ ảnh mọi khoa cho ai đoán được tên file). Cùng danh sách permission
+// với GET danh sách ảnh ở trên. Dùng ResponseFile vì controller tự
+// res.redirect/pipe stream, không bọc JSON envelope.
+svRouter.get("/image/:id", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA, XEM_TOAN_QUYEN_BAO_CAO_LICH]), ResponseFile(PhotoGalleryController.serveImage));
 // Sửa: chỉ dùng cho ảnh gửi độc lập (Anh5S.tsx) -- giữ nguyên QUAN_LY_ANH_5S_TAT_CA_KHOA.
 svRouter.post("/update-photo-gallery", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(PhotoGalleryController.updatePhotoGallery));
 // Xoá: nới permission GATE để ai tạo được ảnh (đánh giá) cũng vào được route,

@@ -49,7 +49,7 @@ const getListKhacPhuc = async (data, authUser) => {
     return { rows: res, total }
 }
 
-const getKhacPhucById = async (id) => {
+const getKhacPhucById = async (id, authUser) => {
     const data = await KhacPhuc.findOne({
         where: { id },
         include: [
@@ -68,6 +68,14 @@ const getKhacPhucById = async (id) => {
 
     if (!data) {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_KHAC_PHUC)
+    }
+
+    // Trưởng khoa/Nhân viên (không full scope) chỉ xem được khắc phục của khoa
+    // mình -- trước đây hàm này không nhận/kiểm tra authUser nên bất kỳ tài
+    // khoản nào đăng nhập cũng xem được chi tiết khắc phục của MỌI khoa qua id.
+    const khoaId = data.khoa_id ?? await getKhoaIdOfKhacPhuc(data.danh_gia_chi_tiet_id);
+    if (authUser && !authUser.isFullScope && Number(khoaId) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
     }
 
     return data

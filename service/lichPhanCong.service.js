@@ -57,7 +57,7 @@ const getListLichPhanCong = async (data, authUser) => {
     return { rows: res, total }
 }
 
-const getLichPhanCongById = async (id) => {
+const getLichPhanCongById = async (id, authUser) => {
     const data = await LichPhanCong.findOne({
         where: { id },
         include: [
@@ -70,6 +70,13 @@ const getLichPhanCongById = async (id) => {
 
     if (!data) {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_LICH_PHAN_CONG)
+    }
+
+    // Trưởng khoa/Nhân viên (không full scope) chỉ xem được lịch của khoa mình
+    // -- trước đây hàm này không nhận/kiểm tra authUser nên bất kỳ tài khoản
+    // nào đăng nhập cũng xem được chi tiết lịch phân công của MỌI khoa qua id.
+    if (authUser && !authUser.isFullScope && Number(data.khoa_id) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
     }
 
     return data

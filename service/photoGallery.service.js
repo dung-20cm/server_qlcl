@@ -1,7 +1,9 @@
+const fs = require("fs");
 const { Op } = require("sequelize");
 const { ERROR_MESSAGE } = require("../config/error");
 const { PhotoGallery, DanhGia, ChecklistItem, Khoa, VitriType, User } = require("../model");
 const { QUAN_LY_ANH_5S_TAT_CA_KHOA } = require("../middleware/actionDefault");
+const { resolveImagePath } = require("./localImageStorage.service");
 
 // Ảnh gắn 1 lượt đánh giá (danh_gia_id có giá trị) -- chỉ CHÍNH tài khoản đã
 // tạo lượt đánh giá đó mới được thêm/xoá ảnh (khớp đúng quyền sửa/xoá đánh giá
@@ -19,7 +21,7 @@ function assertCanManageAnh5S(authUser) {
     }
 }
 
-const getListPhotoGallery = async (data) => {
+const getListPhotoGallery = async (data, authUser) => {
     let where = { active: 1 };
     if (data.danh_gia_id) where.danh_gia_id = data.danh_gia_id;
     if (data.checklist_item_id) where.checklist_item_id = data.checklist_item_id;
@@ -35,18 +37,39 @@ const getListPhotoGallery = async (data) => {
     }
     if (data.active === 'all') delete where.active;
 
+    // Trưởng khoa/Nhân viên (không full scope) chỉ xem ảnh của khoa mình --
+    // trước đây hàm này chỉ lọc theo khoa_id do CLIENT tự gửi lên (không gửi thì
+    // trả về ảnh của MỌI khoa), không hề tự khoá theo khoa của người đang đăng
+    // nhập như mọi API danh sách khác. Ảnh có 2 nguồn khoa: khoa_id lưu trực
+    // tiếp trên chính bản ghi (ảnh gửi độc lập, VD Zalo 5S) HOẶC khoa_id của
+    // bản ghi danh_gia liên kết (ảnh minh chứng gắn 1 lượt đánh giá do nhân
+    // viên khoa mình chấm) -- phải OR cả 2 nguồn mới đúng, không được chỉ lọc
+    // 1 cột khoa_id của bảng photo_gallery.
+    if (authUser && !authUser.isFullScope) {
+        where[Op.and] = [
+            {
+                [Op.or]: [
+                    { khoa_id: authUser.khoa_id },
+                    { '$danh_gia.khoa_id$': authUser.khoa_id },
+                ],
+            },
+        ];
+    }
+
+    const danhGiaInclude = {
+        model: DanhGia, as: 'danh_gia', required: false,
+        include: [
+            { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
+            { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
+            { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email'] },
+        ]
+    };
+
     const res = await PhotoGallery.findAll({
         where: { ...where },
         order: [['id', 'desc']],
         include: [
-            {
-                model: DanhGia, as: 'danh_gia',
-                include: [
-                    { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
-                    { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
-                    { model: User, as: 'nguoi_danh_gia', attributes: ['id', 'username', 'email'] },
-                ]
-            },
+            danhGiaInclude,
             { model: ChecklistItem, as: 'checklist_item', attributes: ['id', 'sub', 'tc'] },
             { model: Khoa, as: 'khoa', attributes: ['id', 'ten_khoa'] },
             { model: VitriType, as: 'vitri_type', attributes: ['id', 'ten_vitri'] },
@@ -54,7 +77,12 @@ const getListPhotoGallery = async (data) => {
         ]
     })
 
-    const total = await PhotoGallery.count({ where: { ...where } })
+    // count() cần include cùng bảng danh_gia (attributes rỗng, chỉ để JOIN) vì
+    // where ở trên tham chiếu tới cột $danh_gia.khoa_id$ khi lọc theo khoa.
+    const total = await PhotoGallery.count({
+        where: { ...where },
+        include: [{ model: DanhGia, as: 'danh_gia', attributes: [], required: false }],
+    })
 
     return { rows: res, total }
 }
@@ -128,8 +156,48 @@ const deletePhotoGallery = async (id, authUser) => {
     return del
 }
 
+// Lấy stream/redirect để phục vụ ảnh qua route CÓ XÁC THỰC (GET
+// /api/photo-gallery/image/:id) -- áp ĐÚNG quy tắc khoá theo khoa như
+// getListPhotoGallery (Trưởng khoa/Nhân viên chỉ xem ảnh khoa mình), KHÔNG
+// phải express.static công khai -- đây chính là điểm phải làm đúng để không
+// phá vỡ phần khoá theo khoa đã fix ở getListPhotoGallery.
+//
+// Ảnh cũ (upload trước khi chuyển sang lưu cục bộ) vẫn còn url_anh là link
+// Cloudinary đầy đủ (http...) -- redirect thẳng sang đó SAU KHI đã qua bước
+// kiểm tra khoa, không cố tìm file trên đĩa.
+const getImageForServing = async (id, authUser) => {
+    const photo = await PhotoGallery.findOne({
+        where: { id },
+        include: [{ model: DanhGia, as: 'danh_gia', attributes: ['khoa_id'] }],
+    });
+
+    if (!photo) {
+        throw new Error(ERROR_MESSAGE.NOT_FOUND_PHOTO_GALLERY);
+    }
+
+    const khoaId = photo.khoa_id ?? photo.danh_gia?.khoa_id ?? null;
+    if (authUser && !authUser.isFullScope && Number(khoaId) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
+    }
+
+    if (/^https?:\/\//i.test(photo.url_anh)) {
+        return { redirectUrl: photo.url_anh };
+    }
+
+    const filePath = resolveImagePath(photo.url_anh);
+    if (!fs.existsSync(filePath)) {
+        throw new Error(ERROR_MESSAGE.NOT_FOUND_PHOTO_GALLERY);
+    }
+
+    return {
+        stream: fs.createReadStream(filePath),
+        mimeType: photo.mime_type || 'image/jpeg',
+    };
+}
+
 module.exports = {
     getListPhotoGallery,
+    getImageForServing,
     createPhotoGallery,
     updatePhotoGallery,
     createManyPhotoGallery,

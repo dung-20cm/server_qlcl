@@ -102,7 +102,7 @@ async function attachDongDanhGia(rows) {
 
 // Lấy 1 phiếu đánh giá kèm toàn bộ chi tiết từng tiêu chí, nhóm sẵn theo S
 // (để hiển thị lại bảng kiểm giống lúc làm đánh giá, hoặc để in báo cáo).
-const getDanhGiaById = async (id) => {
+const getDanhGiaById = async (id, authUser) => {
     const data = await DanhGia.findOne({
         where: { id },
         include: [
@@ -115,6 +115,13 @@ const getDanhGiaById = async (id) => {
 
     if (!data) {
         throw new Error(ERROR_MESSAGE.NOT_FOUND_DANH_GIA)
+    }
+
+    // Trưởng khoa/Nhân viên (không full scope) chỉ xem được đánh giá của khoa
+    // mình -- trước đây hàm này không nhận/kiểm tra authUser nên bất kỳ tài
+    // khoản nào đăng nhập cũng xem được chi tiết đánh giá của MỌI khoa qua id.
+    if (authUser && !authUser.isFullScope && Number(data.khoa_id) !== Number(authUser.khoa_id)) {
+        throw new Error(ERROR_MESSAGE.FORBIDDEN);
     }
 
     const chiTiet = await DanhGiaChiTiet.findAll({

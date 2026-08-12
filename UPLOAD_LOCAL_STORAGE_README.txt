@@ -1,3 +1,11 @@
+[ĐÃ LỖI THỜI kể từ 2026-08-12 -- xem CLOUDINARY_README.txt thay thế]
+File này mô tả 1 kiểu lưu tạm hoàn toàn khác (ghi file TẠM ra đĩa TRƯỚC KHI
+đẩy lên Cloudinary, rồi xoá đi). Từ 2026-08-12, hệ thống đã chuyển hẳn sang
+lưu ảnh CỐ ĐỊNH trên đĩa server (không còn dùng Cloudinary nữa) -- xem
+service/localImageStorage.service.js + CLOUDINARY_README.txt. Giữ file này
+lại chỉ để tham khảo lịch sử, KHÔNG áp dụng theo hướng dẫn bên dưới nữa.
+============================================================================
+
 HƯỚNG DẪN BẬT LẠI LƯU ẢNH VÀO static/uploads/ (LƯU FILE TẠM TRÊN ĐĨA SERVER)
 ============================================================================
 Cập nhật: 2026-07-09

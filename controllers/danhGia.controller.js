@@ -6,7 +6,7 @@ const getListDanhGia = async (req) => {
 
 const getDanhGiaById = async (req) => {
     const id = req.params.id;
-    return await danhGiaServices.getDanhGiaById(id);
+    return await danhGiaServices.getDanhGiaById(id, req.authUser);
 }
 
 const createDanhGia = async (req) => {

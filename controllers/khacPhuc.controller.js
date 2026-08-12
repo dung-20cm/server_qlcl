@@ -6,7 +6,7 @@ const getListKhacPhuc = async (req) => {
 
 const getKhacPhucById = async (req) => {
     const id = req.params.id;
-    return await khacPhucServices.getKhacPhucById(id);
+    return await khacPhucServices.getKhacPhucById(id, req.authUser);
 }
 
 const createUpdateKhacPhuc = async (req) => {

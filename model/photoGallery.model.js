@@ -41,7 +41,12 @@ const attributes = {
   },
   url_anh: {
     type: DataTypes.STRING(500),
-    allowNull: false, // link ảnh sau khi upload (Cloudinary)
+    allowNull: false,
+    // Từ 2026-08-12: lưu KEY tương đối trên đĩa (VD "2026/08/12/<uuid>.jpg"),
+    // ghép với UPLOAD_DIR (.env) ra đường dẫn vật lý thật -- xem
+    // service/localImageStorage.service.js + GET /api/photo-gallery/image/:id.
+    // Ảnh cũ tạo TRƯỚC ngày này vẫn còn lưu full URL Cloudinary (http...) --
+    // route serveImage tự nhận diện và redirect sang link đó, không cần migrate dữ liệu cũ.
   },
   ten_file: {
     type: DataTypes.STRING(255),
