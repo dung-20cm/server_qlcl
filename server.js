@@ -12,6 +12,7 @@ const { Readable } = require("stream");
 const { ERROR_MESSAGE } = require("./config/error");
 const { isAuthAdmin } = require("./middleware/auth");
 const { saveResizedImage } = require("./service/localImageStorage.service");
+const { buildPhotoBaseName } = require("./service/photoNaming.service");
 
 // ============================================================================
 // CLOUDINARY (ĐANG TẮT — 2026-08-12) — đã chuyển sang lưu ảnh cục bộ trên đĩa
@@ -223,11 +224,23 @@ app.post("/api/upload/uploadImage", isAuthAdmin, async (req, res) => {
       // (service/localImageStorage.service.js) rồi ghi ra UPLOAD_DIR (.env).
       // File chỉ nằm trong RAM (file.buffer) tới bước này, không ghi bản GỐC
       // chưa nén ra đĩa -- chỉ ghi đúng 1 bản đã xử lý.
+      //
+      // Đặt tên file dễ quản lý (VD "Ptchc_dungpt_12082026_anh1.jpg") nếu FE
+      // gửi kèm ngữ cảnh khoa/người/ngày/thứ tự (multer .any() đưa field text
+      // vào req.body cùng lúc với file) -- thiếu thì tự rơi về uuid như cũ.
+      const baseName = buildPhotoBaseName({
+        khoaTen: req.body.khoaTen,
+        username: req.body.username,
+        ngay: req.body.ngay,
+        index: req.body.index,
+      });
+
       try {
         const { relativeKey, mimeType } = await saveResizedImage(
           file.buffer,
           file.originalname,
           file.mimetype,
+          baseName,
         );
 
         // FE (CMS_Dashboard_QLCL/src/features/qlcl/api.ts -> uploadImage()) đọc

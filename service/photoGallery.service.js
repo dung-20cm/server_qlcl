@@ -3,7 +3,13 @@ const { Op } = require("sequelize");
 const { ERROR_MESSAGE } = require("../config/error");
 const { PhotoGallery, DanhGia, ChecklistItem, Khoa, VitriType, User } = require("../model");
 const { QUAN_LY_ANH_5S_TAT_CA_KHOA } = require("../middleware/actionDefault");
-const { resolveImagePath } = require("./localImageStorage.service");
+const {
+    resolveImagePath,
+    renameImageFile,
+    renameToDeletedMarker,
+    extractPhotoIndex,
+} = require("./localImageStorage.service");
+const { buildPhotoBaseName } = require("./photoNaming.service");
 
 // Ảnh gắn 1 lượt đánh giá (danh_gia_id có giá trị) -- chỉ CHÍNH tài khoản đã
 // tạo lượt đánh giá đó mới được thêm/xoá ảnh (khớp đúng quyền sửa/xoá đánh giá
@@ -107,6 +113,11 @@ const createPhotoGallery = async (data, authUser) => {
 
 // Sửa thông tin 1 ảnh gửi độc lập (khoa, vị trí, ngày, người gửi, kết quả, ghi chú).
 // Không cho sửa danh_gia_id/checklist_item_id (ảnh gắn lượt đánh giá thì cố định theo lượt đó).
+//
+// Nếu khoa/ngày/người gửi thực sự đổi VÀ ảnh đang lưu cục bộ (không phải link
+// Cloudinary cũ) -- đổi luôn tên file vật lý theo ngữ cảnh mới (VD sửa từ
+// khoa A sang khoa B thì tên file cũng phải đổi theo B), giữ nguyên số thứ tự
+// "anhN" đã có để không xáo trộn thứ tự các ảnh khác trong cùng lượt.
 const updatePhotoGallery = async (data) => {
     const check = await PhotoGallery.findOne({ where: { id: data.id } })
 
@@ -115,7 +126,33 @@ const updatePhotoGallery = async (data) => {
     }
 
     const { id, danh_gia_id, checklist_item_id, ...rest } = data;
-    const update = await check.update({ ...rest })
+
+    const khoaChanged = rest.khoa_id !== undefined && Number(rest.khoa_id) !== Number(check.khoa_id);
+    const ngayChanged = rest.ngay_chup !== undefined && rest.ngay_chup !== check.ngay_chup;
+    const nguoiChanged = rest.nguoi_gui_id !== undefined && Number(rest.nguoi_gui_id) !== Number(check.nguoi_gui_id);
+
+    let newUrlAnh;
+    if ((khoaChanged || ngayChanged || nguoiChanged) && check.url_anh) {
+        const khoaId = rest.khoa_id ?? check.khoa_id;
+        const nguoiGuiId = rest.nguoi_gui_id ?? check.nguoi_gui_id;
+        const ngay = rest.ngay_chup ?? check.ngay_chup;
+        const [khoa, nguoiGui] = await Promise.all([
+            khoaId ? Khoa.findByPk(khoaId) : Promise.resolve(null),
+            nguoiGuiId ? User.findByPk(nguoiGuiId) : Promise.resolve(null),
+        ]);
+        const baseName = buildPhotoBaseName({
+            khoaTen: khoa?.ten_khoa,
+            username: nguoiGui?.username,
+            ngay,
+            index: extractPhotoIndex(check.url_anh),
+        });
+        if (baseName) {
+            const renamed = renameImageFile(check.url_anh, baseName);
+            if (renamed) newUrlAnh = renamed;
+        }
+    }
+
+    const update = await check.update({ ...rest, ...(newUrlAnh ? { url_anh: newUrlAnh } : {}) })
     return update
 }
 
@@ -152,7 +189,13 @@ const deletePhotoGallery = async (id, authUser) => {
         assertCanManageAnh5S(authUser);
     }
 
-    const del = await check.update({ active: 0 })
+    // Đánh dấu ngay trên tên file vật lý (thêm hậu tố "_daxoa") để mở
+    // UPLOAD_DIR bằng Explorer cũng nhận ra ảnh nào đã xoá, không cần mở app.
+    const renamedKey = renameToDeletedMarker(check.url_anh);
+    const del = await check.update({
+        active: 0,
+        ...(renamedKey ? { url_anh: renamedKey } : {}),
+    })
     return del
 }
 

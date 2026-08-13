@@ -5,6 +5,7 @@ const { sequelize } = require("../config/connect");
 const {
     DanhGia, DanhGiaChiTiet, Khoa, VitriType, VitriChiTiet, User, ChecklistItem, KhacPhuc, PhotoGallery
 } = require("../model");
+const { renameToDeletedMarker } = require("./localImageStorage.service");
 
 const getListDanhGia = async (data, authUser) => {
     const paging = data.page && data.limit ? Paging(data.page, data.limit) : {};
@@ -380,11 +381,20 @@ const deleteDanhGia = async (id, authUser) => {
 
     // Xoá đánh giá thì ảnh minh chứng đính kèm cũng không còn ý nghĩa gì nữa
     // -- ẩn theo (soft-delete) để trang Ảnh 5S không còn hiển thị ảnh của
-    // đánh giá đã xoá.
-    await PhotoGallery.update(
-        { active: 0 },
-        { where: { danh_gia_id: id, active: 1 } },
-    )
+    // đánh giá đã xoá. Đổi tên file vật lý sang hậu tố "_daxoa" từng ảnh một
+    // (không dùng bulk update) để đồng bộ với luồng xoá 1 ảnh lẻ
+    // (photoGallery.service.js -> deletePhotoGallery), giúp nhìn trong
+    // UPLOAD_DIR bằng Explorer cũng biết ngay ảnh nào đã xoá.
+    const photosToDelete = await PhotoGallery.findAll({
+        where: { danh_gia_id: id, active: 1 },
+    });
+    for (const photo of photosToDelete) {
+        const renamedKey = renameToDeletedMarker(photo.url_anh);
+        await photo.update({
+            active: 0,
+            ...(renamedKey ? { url_anh: renamedKey } : {}),
+        });
+    }
 
     return del
 }
