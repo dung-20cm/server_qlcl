@@ -9,6 +9,7 @@ const TAO_TAI_KHOAN = 'tao-tai-khoan' // Quản lý tài khoản > CRUD tài kho
 const PHAN_QUYEN_TAI_KHOAN = 'phan-quyen-tai-khoan' // Quản lý tài khoản > Phân quyền cho các tài khoản
 const CAU_HINH_DOT_DANH_GIA = 'cau-hinh-dot-danh-gia' // Cấu hình tạo đợt đánh giá
 const CAU_HINH_PHONG_KHOA_KIEM_TRA = 'cau-hinh-phong-khoa-kiem-tra' // Cấu hình phòng khoa nào cần kiểm tra phần nào
+const XUAT_DU_LIEU = 'xuat-du-lieu' // Trang "Xuất dữ liệu" (xuất Excel nhiều sheet) -- CHỈ Admin, kể cả Lãnh đạo cũng không có
 
 // ===== PHÒNG QLCL =====
 const XEM_TONG_HOP_TAT_CA_KHOA = 'xem-tong-hop-tat-ca-khoa' // Xem tổng hợp, xu hướng, thống kê, báo cáo, lịch,.. của tất cả các khoa
@@ -49,6 +50,7 @@ module.exports = {
     PHAN_QUYEN_TAI_KHOAN,
     CAU_HINH_DOT_DANH_GIA,
     CAU_HINH_PHONG_KHOA_KIEM_TRA,
+    XUAT_DU_LIEU,
 
     // Phòng QLCL
     XEM_TONG_HOP_TAT_CA_KHOA,

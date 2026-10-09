@@ -13,6 +13,7 @@ const LichPhanCongController = require("./lichPhanCong.controller");
 const Anh5sTuanController = require("./anh5sTuan.controller");
 const DotDanhGiaController = require("./dotDanhGia.controller");
 const BaoCaoZalo5sController = require("./baoCaoZalo5s.controller");
+const XuatDuLieuController = require("./xuatDuLieu.controller");
 
 module.exports = {
   UserController,
@@ -29,4 +30,5 @@ module.exports = {
   Anh5sTuanController,
   DotDanhGiaController,
   BaoCaoZalo5sController,
+  XuatDuLieuController,
 };

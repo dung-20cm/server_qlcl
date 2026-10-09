@@ -12,6 +12,7 @@ const PhotoGallery = require("./photoGallery.routes");
 const LichPhanCong = require("./lichPhanCong.routes");
 const Anh5sTuan = require("./anh5sTuan.routes");
 const DotDanhGia = require("./dotDanhGia.routes");
+const XuatDuLieu = require("./xuatDuLieu.routes");
 
 const { Router } = require("express");
 const routerApp = new Router();
@@ -33,5 +34,6 @@ routerApp.use("/api/photo-gallery", PhotoGallery);
 routerApp.use("/api/lich-phan-cong", LichPhanCong);
 routerApp.use("/api/anh-5s-tuan", Anh5sTuan);
 routerApp.use("/api/dot-danh-gia", DotDanhGia);
+routerApp.use("/api/xuat-du-lieu", XuatDuLieu);
 
 module.exports = routerApp;

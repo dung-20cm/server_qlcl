@@ -13,6 +13,7 @@ const anh5sTuanServices = require("./anh5sTuan.service.js");
 const dotDanhGiaServices = require("./dotDanhGia.service.js");
 const baoCaoZalo5sServices = require("./baoCaoZalo5s.service.js");
 const localImageStorageServices = require("./localImageStorage.service.js");
+const xuatDuLieuServices = require("./xuatDuLieu.service.js");
 
 module.exports = {
   userServices,
@@ -30,4 +31,5 @@ module.exports = {
   dotDanhGiaServices,
   baoCaoZalo5sServices,
   localImageStorageServices,
+  xuatDuLieuServices,
 };

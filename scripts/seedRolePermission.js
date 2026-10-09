@@ -48,6 +48,7 @@ const PERMISSIONS = [
   { slug: ACTION.PHAN_QUYEN_TAI_KHOAN, name: "Phân quyền cho các tài khoản" },
   { slug: ACTION.CAU_HINH_DOT_DANH_GIA, name: "Cấu hình tạo đợt đánh giá" },
   { slug: ACTION.CAU_HINH_PHONG_KHOA_KIEM_TRA, name: "Cấu hình phòng khoa nào cần kiểm tra phần nào" },
+  { slug: ACTION.XUAT_DU_LIEU, name: "Xuất dữ liệu toàn hệ thống ra Excel" },
 
   { slug: ACTION.XEM_TONG_HOP_TAT_CA_KHOA, name: "Xem tổng hợp, xu hướng, thống kê, báo cáo, lịch của tất cả các khoa" },
   { slug: ACTION.DANH_GIA_CAC_KHOA, name: "Làm bảng kiểm/đánh giá các khoa" },
@@ -109,6 +110,7 @@ const ROLE_PERMISSION_MAP = {
     ACTION.PHAN_QUYEN_TAI_KHOAN,
     ACTION.CAU_HINH_DOT_DANH_GIA,
     ACTION.CAU_HINH_PHONG_KHOA_KIEM_TRA,
+    ACTION.XUAT_DU_LIEU, // Trang "Xuất dữ liệu" -- CHỈ Admin, không nằm trong bất kỳ *_PERMS nào khác (kể cả Lãnh đạo)
     // + toàn bộ quyền của 3 role còn lại (Admin có tất cả các quyền)
     ...new Set([...QLCL_PERMS, ...TRUONG_KHOA_PERMS, ...NHAN_VIEN_PERMS]),
   ],
