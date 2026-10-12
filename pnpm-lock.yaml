@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      archiver:
+        specifier: 5.3.2
+        version: 5.3.2
       axios:
         specifier: ^1.6.2
         version: 1.20.0(debug@4.4.3(supports-color@5.5.0))(supports-color@5.5.0)

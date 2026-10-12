@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/dungdevtb/server_nodejs_mysql#readme",
   "dependencies": {
+    "archiver": "5.3.2",
     "axios": "^1.6.2",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",

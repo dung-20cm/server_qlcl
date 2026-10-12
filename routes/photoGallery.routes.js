@@ -26,6 +26,8 @@ svRouter.get("/get-list-photo-gallery", check_permission([LAM_DANH_GIA, DANH_GIA
 // với GET danh sách ảnh ở trên. Dùng ResponseFile vì controller tự
 // res.redirect/pipe stream, không bọc JSON envelope.
 svRouter.get("/image/:id", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA, XEM_TOAN_QUYEN_BAO_CAO_LICH]), ResponseFile(PhotoGalleryController.serveImage));
+// Ảnh thu nhỏ (vài KB) -- cùng quyền/khoá khoa như /image/:id, dùng cho xuất Excel/Sheet.
+svRouter.get("/thumb/:id", check_permission([LAM_DANH_GIA, DANH_GIA_CAC_KHOA, QUAN_LY_BANG_KIEM_KHOA_MINH, QUAN_LY_ANH_5S_TAT_CA_KHOA, XEM_TOAN_QUYEN_BAO_CAO_LICH]), ResponseFile(PhotoGalleryController.serveThumb));
 // Sửa: chỉ dùng cho ảnh gửi độc lập (Anh5S.tsx) -- giữ nguyên QUAN_LY_ANH_5S_TAT_CA_KHOA.
 svRouter.post("/update-photo-gallery", check_permission(QUAN_LY_ANH_5S_TAT_CA_KHOA), Response(PhotoGalleryController.updatePhotoGallery));
 // Xoá: nới permission GATE để ai tạo được ảnh (đánh giá) cũng vào được route,

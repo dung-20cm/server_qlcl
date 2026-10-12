@@ -10,6 +10,7 @@ const {
     extractPhotoIndex,
 } = require("./localImageStorage.service");
 const { buildPhotoBaseName } = require("./photoNaming.service");
+const { ensureThumbFile } = require("./photoThumb.service");
 
 // Ảnh gắn 1 lượt đánh giá (danh_gia_id có giá trị) -- chỉ CHÍNH tài khoản đã
 // tạo lượt đánh giá đó mới được thêm/xoá ảnh (khớp đúng quyền sửa/xoá đánh giá
@@ -208,7 +209,9 @@ const deletePhotoGallery = async (id, authUser) => {
 // Ảnh cũ (upload trước khi chuyển sang lưu cục bộ) vẫn còn url_anh là link
 // Cloudinary đầy đủ (http...) -- redirect thẳng sang đó SAU KHI đã qua bước
 // kiểm tra khoa, không cố tìm file trên đĩa.
-const getImageForServing = async (id, authUser) => {
+// variant: "full" (ảnh gốc, mặc định) | "thumb" (ảnh thu nhỏ ~240x180, vài KB --
+// dùng cho xuất Excel/Sheet). Cùng 1 bước kiểm tra khoa cho cả 2 loại.
+const getImageForServing = async (id, authUser, variant = "full") => {
     const photo = await PhotoGallery.findOne({
         where: { id },
         include: [{ model: DanhGia, as: 'danh_gia', attributes: ['khoa_id'] }],
@@ -221,6 +224,12 @@ const getImageForServing = async (id, authUser) => {
     const khoaId = photo.khoa_id ?? photo.danh_gia?.khoa_id ?? null;
     if (authUser && !authUser.isFullScope && Number(khoaId) !== Number(authUser.khoa_id)) {
         throw new Error(ERROR_MESSAGE.FORBIDDEN);
+    }
+
+    if (variant === "thumb") {
+        const thumbPath = await ensureThumbFile(photo);
+        if (!thumbPath) throw new Error(ERROR_MESSAGE.NOT_FOUND_PHOTO_GALLERY);
+        return { stream: fs.createReadStream(thumbPath), mimeType: "image/jpeg" };
     }
 
     if (/^https?:\/\//i.test(photo.url_anh)) {

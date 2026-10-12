@@ -7,9 +7,9 @@ const getListPhotoGallery = async (req) => {
 // Phục vụ file ảnh vật lý qua route CÓ xác thực + kiểm tra khoa (không phải
 // express.static). Dùng ResponseFile (không bọc JSON envelope) vì cần
 // res.redirect/pipe stream trực tiếp -- xem routes/photoGallery.routes.js.
-const serveImage = async (req, res) => {
+const serveImageVariant = async (req, res, variant) => {
     const id = req.params.id;
-    const result = await photoGalleryServices.getImageForServing(id, req.authUser);
+    const result = await photoGalleryServices.getImageForServing(id, req.authUser, variant);
 
     if (result.redirectUrl) {
         return res.redirect(302, result.redirectUrl);
@@ -25,6 +25,9 @@ const serveImage = async (req, res) => {
     });
     result.stream.pipe(res);
 }
+
+const serveImage = (req, res) => serveImageVariant(req, res, "full");
+const serveThumb = (req, res) => serveImageVariant(req, res, "thumb");
 
 const createPhotoGallery = async (req) => {
     return await photoGalleryServices.createPhotoGallery(req.body, req.authUser);
@@ -46,6 +49,7 @@ const deletePhotoGallery = async (req) => {
 module.exports = {
     getListPhotoGallery,
     serveImage,
+    serveThumb,
     createPhotoGallery,
     updatePhotoGallery,
     createManyPhotoGallery,

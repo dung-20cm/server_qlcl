@@ -7,7 +7,12 @@
 // nhau: các hàm đó phục vụ UI phân trang/lọc theo khoa đang đăng nhập, còn ở
 // đây luôn lấy full toàn viện (route đã gate riêng quyền XUAT_DU_LIEU chỉ cấp
 // cho Admin) + trả field đầy đủ hơn (VD user cần thêm createdAt, role...).
+const fs = require("fs");
+const path = require("path");
+const { Readable } = require("stream");
+const archiver = require("archiver");
 const { Op } = require("sequelize");
+const { resolveImagePath } = require("./localImageStorage.service");
 const {
   User,
   Role,
@@ -364,7 +369,14 @@ const getKetQua5S = async ({ tu_ngay, den_ngay } = {}) => {
 };
 
 // ===== 6. Ảnh 5S =====
-const getAnh5S = async ({ tu_ngay, den_ngay } = {}) => {
+const sanitizeSegment = (str, fallback) => {
+  const v = String(str || "").replace(/[\\/:*?"<>|]/g, "").replace(/\s+/g, " ").trim();
+  return v || fallback;
+};
+
+// Đọc + lọc danh sách ảnh theo khoảng ngày -- dùng chung cho cả dữ liệu Excel/Sheet
+// (getAnh5S) lẫn gói ZIP ảnh gốc (streamAnh5SZip) để 2 nơi luôn khớp đúng từng dòng.
+const loadAnh5SItems = async ({ tu_ngay, den_ngay } = {}) => {
   // Không lọc where.ngay_chup ở DB -- ảnh gắn 1 lượt đánh giá có ngay_chup NULL
   // (dùng ngày của đánh giá làm ngày hiệu lực), lọc where sẽ loại nhầm các dòng
   // này. Lọc bằng inRange() ở JS sau khi đã có đủ ngày hiệu lực của từng ảnh.
@@ -378,32 +390,19 @@ const getAnh5S = async ({ tu_ngay, den_ngay } = {}) => {
         required: false,
         include: [
           { model: Khoa, as: "khoa", attributes: ["id", "ten_khoa"] },
-          {
-            model: VitriType,
-            as: "vitri_type",
-            attributes: ["id", "ten_vitri"],
-          },
-          {
-            model: User,
-            as: "nguoi_danh_gia",
-            attributes: ["id", "username", "email"],
-          },
+          { model: VitriType, as: "vitri_type", attributes: ["id", "ten_vitri"] },
+          { model: User, as: "nguoi_danh_gia", attributes: ["id", "username", "email"] },
         ],
       },
       { model: Khoa, as: "khoa", attributes: ["id", "ten_khoa"] },
       { model: VitriType, as: "vitri_type", attributes: ["id", "ten_vitri"] },
-      {
-        model: User,
-        as: "nguoi_gui",
-        attributes: ["id", "username", "email"],
-      },
+      { model: User, as: "nguoi_gui", attributes: ["id", "username", "email"] },
     ],
   });
 
-  return rows
+  const items = rows
     .map((p) => {
-      const ngayHieuLuc =
-        p.ngay_chup || (p.danh_gia ? p.danh_gia.ngay_danh_gia : null);
+      const ngayHieuLuc = p.ngay_chup || (p.danh_gia ? p.danh_gia.ngay_danh_gia : null);
       return {
         id: p.id,
         khoa_phong:
@@ -411,27 +410,108 @@ const getAnh5S = async ({ tu_ngay, den_ngay } = {}) => {
           (p.danh_gia && p.danh_gia.khoa ? p.danh_gia.khoa.ten_khoa : ""),
         vi_tri:
           (p.vitri_type && p.vitri_type.ten_vitri) ||
-          (p.danh_gia && p.danh_gia.vitri_type
-            ? p.danh_gia.vitri_type.ten_vitri
-            : ""),
+          (p.danh_gia && p.danh_gia.vitri_type ? p.danh_gia.vitri_type.ten_vitri : ""),
         ngay_chup: ngayHieuLuc,
         nguoi_gui:
           (p.nguoi_gui && (p.nguoi_gui.email || p.nguoi_gui.username)) ||
           (p.danh_gia && p.danh_gia.nguoi_danh_gia
-            ? p.danh_gia.nguoi_danh_gia.email ||
-              p.danh_gia.nguoi_danh_gia.username
+            ? p.danh_gia.nguoi_danh_gia.email || p.danh_gia.nguoi_danh_gia.username
             : ""),
         ket_qua: p.ket_qua || "",
         ten_file: p.ten_file || "",
-        trang_thai_anh: /_daxoa(\.[a-zA-Z0-9]+)?$/.test(p.url_anh || "")
-          ? "Đã xoá"
-          : "Đang lưu",
+        url_anh: p.url_anh || "",
+        trang_thai_anh: /_daxoa(\.[a-zA-Z0-9]+)?$/.test(p.url_anh || "") ? "Đã xoá" : "Đang lưu",
         ghi_chu: p.ghi_chu || "",
-        _ngayHieuLuc: ngayHieuLuc,
       };
     })
-    .filter((p) => inRange(p._ngayHieuLuc, tu_ngay, den_ngay))
-    .map(({ _ngayHieuLuc, ...rest }) => rest);
+    .filter((p) => inRange(p.ngay_chup, tu_ngay, den_ngay));
+
+  // Đường dẫn của ảnh BÊN TRONG file ZIP: <Khoa>/<yyyy-mm>/<tên file trên đĩa>.
+  // Tên file trên đĩa đã đặt theo quy ước dễ đọc (Ptchc_dungpt_12082026_anh1.jpg);
+  // gộp nhiều ngày vào cùng thư mục tháng nên nếu trùng tên thì thêm _<id>.
+  const used = new Set();
+  for (const it of items) {
+    const isRemote = /^https?:\/\//i.test(it.url_anh);
+    let base = isRemote
+      ? decodeURIComponent(path.basename(new URL(it.url_anh).pathname) || "") || `anh_${it.id}.jpg`
+      : path.basename(it.url_anh);
+    const dir = `${sanitizeSegment(it.khoa_phong, "Khong-ro-khoa")}/${
+      it.ngay_chup ? String(it.ngay_chup).slice(0, 7) : "Khong-ro-ngay"
+    }`;
+    let zipPath = `${dir}/${base}`;
+    if (used.has(zipPath.toLowerCase())) {
+      const ext = path.extname(base);
+      zipPath = `${dir}/${path.basename(base, ext)}_${it.id}${ext}`;
+    }
+    used.add(zipPath.toLowerCase());
+    it.zip_path = zipPath;
+  }
+  return items;
+};
+
+const getAnh5S = async (params = {}) => {
+  const items = await loadAnh5SItems(params);
+  // Không trả url_anh (key nội bộ trên đĩa) ra ngoài -- chỉ trả đường dẫn trong ZIP.
+  return items.map(({ url_anh, ...rest }) => rest);
+};
+
+// Thông tin gói ZIP ảnh gốc (số ảnh, dung lượng) để popup xác nhận trước khi tải.
+const getAnh5SZipInfo = async (params = {}) => {
+  const items = await loadAnh5SItems(params);
+  let bytes = 0;
+  let missing = 0;
+  let remote = 0;
+  for (const it of items) {
+    if (/^https?:\/\//i.test(it.url_anh)) {
+      remote += 1;
+      continue;
+    }
+    try {
+      bytes += fs.statSync(resolveImagePath(it.url_anh)).size;
+    } catch {
+      missing += 1;
+    }
+  }
+  return { count: items.length, bytes, missing, remote };
+};
+
+// Stream ZIP ảnh gốc thẳng vào response -- KHÔNG gom vào RAM, KHÔNG nén lại
+// (ảnh JPEG đã nén sẵn, nén thêm chỉ tốn CPU) nên tốc độ gần bằng tốc độ đọc đĩa,
+// dù hàng chục nghìn ảnh/hàng chục GB.
+const streamAnh5SZip = async (params, res) => {
+  const items = await loadAnh5SItems(params);
+  const safeName = String((params && params.ten) || "Anh5S").replace(/[^A-Za-z0-9_.-]/g, "") || "Anh5S";
+  const fileName = `${safeName}.zip`;
+
+  res.setHeader("Content-Type", "application/zip");
+  res.setHeader("Content-Disposition", `attachment; filename="${fileName}"; filename*=UTF-8''${encodeURIComponent(fileName)}`);
+
+  const archive = archiver("zip", { store: true });
+  archive.on("warning", (err) => console.error("ZIP warning:", err.message));
+  archive.on("error", (err) => {
+    console.error("ZIP lỗi:", err.message);
+    res.destroy(err);
+  });
+  // Người dùng huỷ tải giữa chừng -> dừng đọc đĩa ngay.
+  res.on("close", () => {
+    if (!res.writableFinished) archive.abort();
+  });
+  archive.pipe(res);
+
+  for (const it of items) {
+    if (/^https?:\/\//i.test(it.url_anh)) {
+      try {
+        const r = await fetch(it.url_anh);
+        if (r.ok) archive.append(Readable.fromWeb(r.body), { name: it.zip_path });
+      } catch {
+        // ảnh cũ trên Cloudinary tải lỗi -> bỏ qua, không làm hỏng cả gói
+      }
+      continue;
+    }
+    const filePath = resolveImagePath(it.url_anh);
+    if (fs.existsSync(filePath)) archive.file(filePath, { name: it.zip_path });
+  }
+  await archive.finalize();
 };
 
 const BANG_MAP = {
@@ -459,5 +539,7 @@ module.exports = {
   getLichDanhGia,
   getKetQua5S,
   getAnh5S,
+  getAnh5SZipInfo,
+  streamAnh5SZip,
   getBangDuLieu,
 };
