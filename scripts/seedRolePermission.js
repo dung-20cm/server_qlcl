@@ -36,7 +36,9 @@ const ACTION = require("../middleware/actionDefault");
 const ROLES = [
   { slug: "admin", name: "Admin" },
   { slug: "phong-qlcl", name: "Phòng QLCL" },
-  { slug: "truong-khoa", name: "Trưởng khoa" },
+  // Cùng 1 role (cùng quyền) cho Trưởng khoa / Điều dưỡng trưởng / Kỹ thuật viên trưởng
+  // khi phân công 5S -- đặt tên rõ để người tạo tài khoản hiểu cả 3 chức danh này dùng chung role.
+  { slug: "truong-khoa", name: "Trưởng khoa - Điều dưỡng trưởng - Kỹ thuật viên trưởng" },
   { slug: "nhan-vien", name: "Nhân viên" },
   { slug: "lanhdao", name: "Lãnh đạo" },
 ];
@@ -128,6 +130,11 @@ async function run() {
       where: { slug: r.slug },
       defaults: { name: r.name, del: 0 },
     });
+    // Đồng bộ tên nếu đã đổi (role có sẵn trong DB không tự đổi tên theo findOrCreate)
+    if (role.name !== r.name) {
+      await role.update({ name: r.name });
+      console.log(`  role "${r.slug}" -> đổi tên thành "${r.name}"`);
+    }
     roleBySlug[r.slug] = role;
     console.log(`  role "${r.slug}" -> id=${role.id}`);
   }
